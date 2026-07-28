@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: 28 78% 97%;
+    --surface: 16 100% 96%;
+    --card: 14 90% 95%;
+    --rose: 343 34% 62%;
+    --rose-dark: 340 29% 51%;
+    --sage: 148 17% 61%;
+    --gold: 40 56% 58%;
+    --heading: 24 8% 16%;
+    --body: 24 11% 38%;
+    --muted: 24 8% 62%;
+    --border: 16 42% 87%;
+
+    --background: var(--bg);
+    --foreground: var(--heading);
+    --primary: var(--rose);
+    --primary-foreground: 0 0% 100%;
+    --secondary: var(--surface);
+    --secondary-foreground: var(--heading);
+    --accent: var(--sage);
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --muted-color: var(--muted);
+    --muted-foreground: var(--body);
+    --popover: var(--surface);
+    --popover-foreground: var(--heading);
+    --card-color: var(--card);
+    --card-foreground: var(--heading);
+    --input: var(--border);
+    --ring: var(--rose);
+    --radius: 1rem;
+    --border-color: var(--border);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-brand-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-brand-bg text-brand-body font-body antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display text-brand-heading;
+  }
+}
