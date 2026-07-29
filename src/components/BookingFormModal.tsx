@@ -156,27 +156,15 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
               const verifyRes = await fetch(VERIFY_PAYMENT_URL, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                // body: JSON.stringify({
-                //   razorpay_order_id: response.razorpay_order_id,
-                //   razorpay_payment_id: response.razorpay_payment_id,
-                //   razorpay_signature: response.razorpay_signature,
-                //   booking: form,
-                //   packageName,
-                //   amount: validPackagePrice,
-                // }),
                 body: JSON.stringify({
-  razorpay_order_id: response.razorpay_order_id,
-  razorpay_payment_id: response.razorpay_payment_id,
-  razorpay_signature: response.razorpay_signature,
-
-  formData: {
-    ...form,
-    sourceWebsite: "miraclebaby.ankshaastra.com",
-  },
-
-  service: packageName,
-  amount: validPackagePrice,
-}),
+                  razorpay_order_id: response.razorpay_order_id,
+                  razorpay_payment_id: response.razorpay_payment_id,
+                  razorpay_signature: response.razorpay_signature,
+                  booking: form,
+                  packageName,
+                  amount: validPackagePrice,
+                }),
+                
               });
 
               if (!verifyRes.ok) {
