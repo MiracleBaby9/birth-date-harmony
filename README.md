@@ -1,6 +1,6 @@
 # Birth Date Harmony — Ankshaastra Occult Experts LLP.
 
-C-Section baby date guidance website with integrated Razorpay payment gateway.
+C-Section baby date guidance website with integrated Razorpay payment gateway
 
 ---
 
