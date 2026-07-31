@@ -45,9 +45,6 @@ const Pricing = () => {
   const COMPLETE_NAME = readPackageName("VITE_PACKAGE_COMPLETE_NAME", "Complete Package");
   const COMPLETE_PRICE = readPackagePrice("VITE_PACKAGE_COMPLETE_PRICE", 3167);
 
-  const PREMIUM_NAME = readPackageName("VITE_PACKAGE_PREMIUM_NAME", "Premium Package");
-  const PREMIUM_PRICE = readPackagePrice("VITE_PACKAGE_PREMIUM_PRICE", 5507);
-
   const openForm = (name: string, price: number) => setSelected({ name, price });
 
   return (
@@ -62,7 +59,7 @@ const Pricing = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6 items-stretch">
+        <div className="grid md:grid-cols-2 gap-6 items-stretch max-w-4xl mx-auto">
           {/* Essentials */}
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" custom={0} viewport={{ once: true }}
             className="rounded-card bg-brand-card border border-brand-border p-6 flex flex-col">
@@ -104,35 +101,6 @@ const Pricing = () => {
             </ul>
             <button onClick={() => openForm(COMPLETE_NAME, COMPLETE_PRICE)} className="mt-6 block w-full text-center rounded-full bg-brand-rose text-white font-body font-semibold py-3 transition-transform hover:scale-105">
               Get Started — ₹{COMPLETE_PRICE.toLocaleString("en-IN")}
-            </button>
-          </motion.div>
-
-          {/* Premium */}
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" custom={2} viewport={{ once: true }}
-            className="rounded-card bg-gradient-to-br from-[#FFF6ED] to-[#FDEEE8] border border-brand-gold p-6 flex flex-col relative overflow-hidden">
-            <span className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-brand-gold text-brand-heading text-xs font-body font-semibold px-4 py-1">
-              👑 Premium
-            </span>
-            <svg className="absolute top-3 right-3 w-8 h-8 text-brand-gold/30" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M2 20h20V9l-4 4-4-7-4 7-4-4v11z" />
-              <circle cx="4" cy="7" r="1.5" />
-              <circle cx="12" cy="4" r="1.5" />
-              <circle cx="20" cy="7" r="1.5" />
-            </svg>
-            <div className="text-center mb-4 mt-2">
-              <span className="font-accent text-[52px] font-bold text-brand-gold">&#8377;{PREMIUM_PRICE.toLocaleString("en-IN")}</span>
-              <h3 className="font-display text-xl font-semibold mt-1">{PREMIUM_NAME}</h3>
-              <p className="text-brand-body text-sm mt-1">The complete birth blueprint — nothing left to chance.</p>
-            </div>
-            <ul className="space-y-3 flex-1">
-              <Feature icon="✅" text="Everything in Complete, plus:" />
-              <Feature icon="📊" text="Detailed Analysis of All 3 Auspicious Dates (150+ Pages)" />
-              <Feature icon="🔭" text="In-Depth Planetary & Dasha Predictions for next 10 years of the Child" />
-              <Feature icon="📋" text="Full Comprehensive Birth Report / Kundali (100+ Pages)" />
-              <Feature icon="💬" text="Upgraded to 30-Day WhatsApp Consultation Support" />
-            </ul>
-            <button onClick={() => openForm(PREMIUM_NAME, PREMIUM_PRICE)} className="mt-6 block w-full text-center rounded-full bg-brand-gold text-brand-heading font-body font-semibold py-2.5 transition-transform hover:scale-105">
-              Get Started — ₹{PREMIUM_PRICE.toLocaleString("en-IN")}
             </button>
           </motion.div>
         </div>
