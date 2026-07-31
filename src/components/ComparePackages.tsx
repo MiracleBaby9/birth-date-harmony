@@ -1,18 +1,15 @@
 import { motion } from "framer-motion";
 
 const features = [
-  { label: "Top 3 Auspicious Dates", e: true, c: true, p: true },
-  { label: "Panchang, Tithi, Mool & Nakshatra Analysis", e: true, c: true, p: true },
-  { label: "Numerologically Powerful Dates", e: true, c: true, p: true },
-  { label: "Mulank, Bhagyank & Rajyog Analysis", e: true, c: true, p: true },
-  { label: "Shubh Muhurat Timings", e: true, c: true, p: true },
-  { label: "Swar / Alphabet Suggestion", e: false, c: true, p: true },
-  { label: "Perfect Baby Name Report (50+ Pages)", e: false, c: true, p: true },
-  { label: "Lucky Colors & Numbers", e: false, c: true, p: true },
-  { label: "Detailed Analysis of All 3 Dates (150+ Pages)", e: false, c: false, p: true },
-  { label: "10-Year Planetary & Dasha Predictions", e: false, c: false, p: true },
-  { label: "Full Birth Report / Kundali (100+ Pages)", e: false, c: false, p: true },
-  { label: "WhatsApp Support", e: "15 Days", c: "21 Days", p: "30 Days" },
+  { label: "Top 3 Auspicious Dates", e: true, c: true },
+  { label: "Panchang, Tithi, Mool & Nakshatra Analysis", e: true, c: true },
+  { label: "Numerologically Powerful Dates", e: true, c: true },
+  { label: "Mulank, Bhagyank & Rajyog Analysis", e: true, c: true },
+  { label: "Shubh Muhurat Timings", e: true, c: true },
+  { label: "Swar / Alphabet Suggestion", e: false, c: true },
+  { label: "Perfect Baby Name Report (50+ Pages)", e: false, c: true },
+  { label: "Lucky Colors & Numbers", e: false, c: true },
+  { label: "WhatsApp Support", e: "15 Days", c: "21 Days" },
 ];
 
 const Cell = ({ v }: { v: boolean | string }) => {
@@ -39,7 +36,7 @@ const ComparePackages = () => (
       </motion.div>
 
       <div className="overflow-x-auto rounded-card border border-brand-border bg-brand-card shadow-sm">
-        <table className="w-full min-w-[640px] text-left">
+        <table className="w-full min-w-[420px] text-left">
           <thead>
             <tr className="border-b border-brand-border bg-brand-surface/60">
               <th className="px-4 py-4 font-display text-sm sm:text-base font-semibold text-brand-heading">Features</th>
@@ -47,7 +44,6 @@ const ComparePackages = () => (
               <th className="px-4 py-4 text-center font-display text-sm sm:text-base font-semibold text-brand-rose">
                 Complete <span className="ml-1 align-middle text-[10px] uppercase tracking-wide bg-brand-rose text-white rounded-full px-2 py-0.5">Popular</span>
               </th>
-              <th className="px-4 py-4 text-center font-display text-sm sm:text-base font-semibold text-brand-gold">Premium</th>
             </tr>
           </thead>
           <tbody>
@@ -56,7 +52,6 @@ const ComparePackages = () => (
                 <td className="px-4 py-3 font-body text-sm text-brand-body">{f.label}</td>
                 <td className="px-4 py-3 text-center"><Cell v={f.e} /></td>
                 <td className="px-4 py-3 text-center"><Cell v={f.c} /></td>
-                <td className="px-4 py-3 text-center"><Cell v={f.p} /></td>
               </tr>
             ))}
           </tbody>

@@ -26,7 +26,7 @@ const testimonials = [
     name: "Kavitha M.",
     location: "Bangalore",
     rating: 5,
-    text: "The Premium package was worth every rupee. The 150+ page report and 10-year predictions gave us incredible insight. Highly recommended!",
+    text: "The Complete package was worth every rupee. The Perfect Baby Name report and detailed date analysis gave us incredible insight. Highly recommended!",
   },
   {
     name: "Rohit & Simran K.",
