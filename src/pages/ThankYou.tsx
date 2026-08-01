@@ -90,7 +90,7 @@ const ThankYou = () => {
               <p className="text-sm leading-relaxed text-brand-body">
                 Thank you for booking <strong className="text-brand-heading">{packageName}</strong>.
                 Confirmation details have been sent to your registered email and WhatsApp.
-                Himansshu Ji's team will review your details and share the guidance shortly.
+                Ankshaastra's team will review your details and share the guidance shortly.
               </p>
 
               <div className="rounded-2xl border border-brand-border bg-brand-surface/50 p-5 space-y-3">
