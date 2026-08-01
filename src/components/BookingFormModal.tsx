@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -75,6 +75,23 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
   };
 
   const isProcessing = ["creating", "paying", "verifying"].includes(paymentStatus);
+  const isPaying = paymentStatus === "paying" || paymentStatus === "verifying";
+
+  // While the Razorpay checkout overlay is open, release Radix's focus trap /
+  // scroll lock so the payment sheet stays interactive (esp. on mobile Safari).
+  useEffect(() => {
+    if (!isPaying) return;
+    const body = document.body;
+    const prevOverflow = body.style.overflow;
+    const prevPointer = body.style.pointerEvents;
+    body.style.overflow = "";
+    body.style.pointerEvents = "";
+    body.removeAttribute("data-scroll-locked");
+    return () => {
+      body.style.overflow = prevOverflow;
+      body.style.pointerEvents = prevPointer;
+    };
+  }, [isPaying]);
   const validPackagePrice = getValidPackagePrice(packagePrice);
 
   const buildWhatsAppMessage = (pid: string) =>
