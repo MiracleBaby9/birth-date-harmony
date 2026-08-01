@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -75,6 +75,23 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
   };
 
   const isProcessing = ["creating", "paying", "verifying"].includes(paymentStatus);
+  const isPaying = paymentStatus === "paying" || paymentStatus === "verifying";
+
+  // While the Razorpay checkout overlay is open, release Radix's focus trap /
+  // scroll lock so the payment sheet stays interactive (esp. on mobile Safari).
+  useEffect(() => {
+    if (!isPaying) return;
+    const body = document.body;
+    const prevOverflow = body.style.overflow;
+    const prevPointer = body.style.pointerEvents;
+    body.style.overflow = "";
+    body.style.pointerEvents = "";
+    body.removeAttribute("data-scroll-locked");
+    return () => {
+      body.style.overflow = prevOverflow;
+      body.style.pointerEvents = prevPointer;
+    };
+  }, [isPaying]);
   const validPackagePrice = getValidPackagePrice(packagePrice);
 
   const buildWhatsAppMessage = (pid: string) =>
@@ -262,8 +279,13 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
     );
   }
   return (
-    <Dialog open={open} onOpenChange={(o) => { if (!isProcessing) onOpenChange(o); }}>
-      <DialogContent className="max-w-lg w-[96vw] max-h-[90vh] overflow-y-auto bg-brand-surface border-brand-border p-0">
+    <Dialog open={open} modal={!isPaying} onOpenChange={(o) => { if (!isProcessing) onOpenChange(o); }}>
+      <DialogContent
+        onInteractOutside={(e) => { if (isProcessing) e.preventDefault(); }}
+        onEscapeKeyDown={(e) => { if (isProcessing) e.preventDefault(); }}
+        onOpenAutoFocus={(e) => { if (isPaying) e.preventDefault(); }}
+        className={`max-w-lg w-[96vw] max-h-[90vh] overflow-y-auto bg-brand-surface border-brand-border p-0 ${isPaying ? "pointer-events-none opacity-60" : ""}`}
+      >
         <DialogHeader className="sticky top-0 z-10 bg-brand-surface px-5 pt-5 pb-3 border-b border-brand-border">
           <DialogTitle className="font-display text-lg text-brand-heading text-center">
             {packageName} — ₹{(validPackagePrice ?? packagePrice).toLocaleString("en-IN")}
