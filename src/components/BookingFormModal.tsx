@@ -232,61 +232,12 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
   if (paymentStatus === "success") {
     return (
       <Dialog open={open} onOpenChange={onOpenChange}>
-        <DialogContent className="max-w-md w-[96vw] bg-brand-surface border-brand-border p-0 overflow-hidden">
-          <div className="bg-brand-heading px-6 py-7 text-center text-white">
-            <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500 text-sm font-bold">OK</div>
-            <h2 className="font-display text-2xl font-bold text-white">Payment Successful!</h2>
-            <p className="mt-1 text-sm text-white/75">Your booking is confirmed.</p>
+        <DialogContent className="max-w-sm w-[96vw] bg-brand-surface border-brand-border p-8 text-center">
+          <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-brand-rose/10">
+            <div className="h-6 w-6 animate-spin rounded-full border-2 border-brand-rose border-t-transparent" />
           </div>
-
-          <div className="space-y-5 px-6 py-6 text-center">
-            <div className="inline-flex rounded-md bg-emerald-50 px-3 py-1.5 text-sm font-semibold text-emerald-700">
-              Payment Confirmed
-            </div>
-            <p className="text-sm leading-relaxed text-brand-body">
-              Thank you for booking <strong>{packageName}</strong>. Confirmation has been sent to your registered email and WhatsApp.
-            </p>
-            <div className="rounded-lg border border-brand-border bg-white/70 p-4 text-left text-sm">
-              <div className="flex justify-between gap-4 border-b border-brand-border py-2">
-                <span className="text-brand-muted">Package</span>
-                <span className="text-right font-semibold text-brand-heading">{packageName}</span>
-              </div>
-              <div className="flex justify-between gap-4 border-b border-brand-border py-2">
-                <span className="text-brand-muted">Amount Paid</span>
-                <span className="font-semibold text-brand-heading">Rs. {(validPackagePrice ?? packagePrice).toLocaleString("en-IN")}</span>
-              </div>
-              {orderId && (
-                <div className="flex justify-between gap-4 border-b border-brand-border py-2">
-                  <span className="text-brand-muted">Order ID</span>
-                  <span className="break-all text-right font-mono text-xs text-brand-heading">{orderId}</span>
-                </div>
-              )}
-              {paymentId && (
-                <div className="flex justify-between gap-4 py-2">
-                  <span className="text-brand-muted">Payment ID</span>
-                  <span className="break-all text-right font-mono text-xs text-brand-heading">{paymentId}</span>
-                </div>
-              )}
-            </div>
-            <p className="text-sm leading-relaxed text-brand-body">
-              Himansshu Ji's team will review your details and share the guidance on email or WhatsApp.
-            </p>
-            <Button
-              className="w-full rounded-full bg-brand-rose hover:bg-brand-rose-dark text-white font-semibold"
-              onClick={() => {
-                const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${buildWhatsAppMessage(paymentId)}`;
-                window.open(waLink, "_blank");
-              }}
-            >
-              Chat on WhatsApp
-            </Button>
-            <button
-              className="text-xs text-brand-muted underline"
-              onClick={() => { setPaymentStatus("idle"); onOpenChange(false); }}
-            >
-              Close
-            </button>
-          </div>
+          <h2 className="font-display text-lg text-brand-heading">Payment Successful</h2>
+          <p className="mt-1 text-sm text-brand-muted">Redirecting you to the confirmation page…</p>
         </DialogContent>
       </Dialog>
     );
