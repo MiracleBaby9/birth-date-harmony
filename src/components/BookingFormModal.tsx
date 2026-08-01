@@ -94,6 +94,7 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
       body.style.pointerEvents = prevPointer;
     };
   }, [isPaying]);
+  const validPackagePrice = getValidPackagePrice(packagePrice);
 
   // Redirect to the dedicated thank-you page once payment is verified.
   useEffect(() => {
@@ -105,8 +106,6 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
     if (orderId) params.set("orderId", orderId);
     navigate(`/thank-you?${params.toString()}`, { replace: true });
   }, [paymentStatus, packageName, validPackagePrice, paymentId, orderId, navigate]);
-
-  const validPackagePrice = getValidPackagePrice(packagePrice);
 
   const buildWhatsAppMessage = (pid: string) =>
     encodeURIComponent(
