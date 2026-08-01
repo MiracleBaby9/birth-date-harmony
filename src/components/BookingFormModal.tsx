@@ -94,6 +94,18 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
       body.style.pointerEvents = prevPointer;
     };
   }, [isPaying]);
+
+  // Redirect to the dedicated thank-you page once payment is verified.
+  useEffect(() => {
+    if (paymentStatus !== "success") return;
+    const params = new URLSearchParams();
+    params.set("package", packageName);
+    if (validPackagePrice) params.set("amount", String(validPackagePrice));
+    if (paymentId) params.set("paymentId", paymentId);
+    if (orderId) params.set("orderId", orderId);
+    navigate(`/thank-you?${params.toString()}`, { replace: true });
+  }, [paymentStatus, packageName, validPackagePrice, paymentId, orderId, navigate]);
+
   const validPackagePrice = getValidPackagePrice(packagePrice);
 
   const buildWhatsAppMessage = (pid: string) =>
