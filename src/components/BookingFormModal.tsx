@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useLayoutEffect, useState } from "react";
+
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -25,7 +25,7 @@ const getValidPackagePrice = (price: number) =>
 const todayISO = new Date().toISOString().split("T")[0];
 
 const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: BookingFormModalProps) => {
-  const navigate = useNavigate();
+  
   const [form, setForm] = useState({
     motherName: "",
     fatherName: "",
@@ -95,16 +95,16 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
   }, [isPaying]);
   const validPackagePrice = getValidPackagePrice(packagePrice);
 
-  // Redirect to the dedicated thank-you page once payment is verified.
-  useEffect(() => {
+  // Redirect to the dedicated thank-you page the instant payment is verified.
+  useLayoutEffect(() => {
     if (paymentStatus !== "success") return;
     const params = new URLSearchParams();
     params.set("package", packageName);
     if (validPackagePrice) params.set("amount", String(validPackagePrice));
     if (paymentId) params.set("paymentId", paymentId);
     if (orderId) params.set("orderId", orderId);
-    navigate(`/thank-you?${params.toString()}`, { replace: true });
-  }, [paymentStatus, packageName, validPackagePrice, paymentId, orderId, navigate]);
+    window.location.replace(`/thank-you?${params.toString()}`);
+  }, [paymentStatus, packageName, validPackagePrice, paymentId, orderId]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
