@@ -106,21 +106,6 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
     navigate(`/thank-you?${params.toString()}`, { replace: true });
   }, [paymentStatus, packageName, validPackagePrice, paymentId, orderId, navigate]);
 
-  const buildWhatsAppMessage = (pid: string) =>
-    encodeURIComponent(
-      `✅ *Payment Confirmed — ${packageName}*\n` +
-      `💳 Payment ID: ${pid}\n\n` +
-      `👩 Mother: ${form.motherName}\n` +
-      `👨 Father: ${form.fatherName}\n` +
-      `📅 Expected Delivery Window: ${form.expectedDeliveryFrom} to ${form.expectedDeliveryTo}\n` +
-      `📍 ${form.city} — ${form.pinCode}\n` +
-      `🏥 Hospital: ${form.hospitalName}\n` +
-      `📧 ${form.email}\n📱 ${form.whatsapp}\n` +
-      (form.avoidOrPreferNumbers ? `🔢 Numbers: ${form.avoidOrPreferNumbers}\n` : "") +
-      (form.preferredDeity ? `🙏 Deity: ${form.preferredDeity}\n` : "") +
-      (form.qualities ? `✨ Qualities: ${form.qualities}\n` : "")
-    );
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage("");
