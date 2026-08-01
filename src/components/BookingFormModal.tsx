@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -25,7 +25,7 @@ const getValidPackagePrice = (price: number) =>
 const todayISO = new Date().toISOString().split("T")[0];
 
 const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: BookingFormModalProps) => {
-  const navigate = useNavigate();
+  
   const [form, setForm] = useState({
     motherName: "",
     fatherName: "",
