@@ -42,6 +42,7 @@ import Index from "./pages/Index.tsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 import RefundPolicy from "./pages/RefundPolicy.tsx";
 import TermsOfService from "./pages/TermsOfService.tsx";
+import ThankYou from "./pages/ThankYou.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ExternalRedirect from "@/components/ExternalRedirect";
 
@@ -58,6 +59,7 @@ const App = () => (
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/refund-policy" element={<RefundPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
+          <Route path="/thank-you" element={<ThankYou />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="/admin" element={<ExternalRedirect url="https://ankshaastra.com/admin" />} />
           <Route path="*" element={<NotFound />} />
