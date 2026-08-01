@@ -26,6 +26,7 @@ const getValidPackagePrice = (price: number) =>
 const todayISO = new Date().toISOString().split("T")[0];
 
 const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: BookingFormModalProps) => {
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     motherName: "",
     fatherName: "",
