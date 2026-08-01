@@ -6,7 +6,6 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { loadRazorpayScript, openRazorpayCheckout } from "@/lib/razorpay";
-import { WHATSAPP_NUMBER } from "@/lib/constants";
 import { CREATE_ORDER_URL, VERIFY_PAYMENT_URL } from "@/lib/payment-config";
 
 interface BookingFormModalProps {
