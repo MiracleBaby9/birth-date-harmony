@@ -17,6 +17,9 @@ interface BookingFormModalProps {
 
 const QUALITIES = ["Success", "Wealth", "Leadership", "Spirituality", "Health", "All"];
 
+const ADDON_NAME = "Delivery Date Change Protection";
+const ADDON_PRICE = 737;
+
 type PaymentStatus = "idle" | "creating" | "paying" | "verifying" | "success" | "error";
 
 const getValidPackagePrice = (price: number) =>
