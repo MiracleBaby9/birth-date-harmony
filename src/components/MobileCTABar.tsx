@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { getWhatsAppLink } from "@/lib/constants";
 
 const MobileCTABar = () => {
   const [visible, setVisible] = useState(false);
@@ -18,12 +17,10 @@ const MobileCTABar = () => {
     >
       <div className="bg-brand-surface/95 backdrop-blur-md border-t border-brand-border px-4 py-3">
         <a
-          href={getWhatsAppLink()}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block w-full text-center rounded-full bg-brand-rose px-6 py-3 text-sm font-body font-semibold text-white shadow-lg transition-transform hover:scale-105"
+          href="#pricing"
+          className="block w-full text-center rounded-full bg-gradient-warm px-6 py-3 text-sm font-body font-semibold text-white shadow-lg transition-transform hover:scale-105"
         >
-          💬 Get My C-Section Baby Dates Now
+          Get My C-Section Baby Dates Now
         </a>
       </div>
     </div>

@@ -7,7 +7,6 @@ import ComparePackages from "@/components/ComparePackages";
 import Pricing from "@/components/Pricing";
 import PressStrip from "@/components/PressStrip";
 import Testimonials from "@/components/Testimonials";
-import NeedHelpTooltip from "@/components/NeedHelpTooltip";
 import Celebrities from "@/components/Celebrities";
 import About from "@/components/About";
 import FAQ from "@/components/FAQ";
@@ -15,7 +14,6 @@ import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 import MobileCTABar from "@/components/MobileCTABar";
 import StickyDisclaimer from "@/components/StickyDisclaimer";
-import WhatsAppFloat from "@/components/WhatsAppFloat";
 import DisclaimerPopup from "@/components/DisclaimerPopup";
 
 const Index = () => (
@@ -37,8 +35,6 @@ const Index = () => (
     <FinalCTA />
     <Footer />
     <MobileCTABar />
-    <WhatsAppFloat />
-    <NeedHelpTooltip />
   </>
 );
 

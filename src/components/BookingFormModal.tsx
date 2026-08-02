@@ -171,7 +171,7 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
             email: form.email,
             contact: form.whatsapp.replace(/\D/g, ""),
           },
-          theme: { color: "#C4788A" },
+          theme: { color: "#E8637F" },
           handler: async (response) => {
             setPaymentStatus("verifying");
             try {

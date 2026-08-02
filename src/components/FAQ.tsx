@@ -11,7 +11,7 @@ const faqs = [
   { q: "What details are required from parents?", a: "You will be asked for the expected delivery window, medical constraints (if any), and basic parental details required for numerology evaluation." },
   { q: "Can this be done at the last minute?", a: "Yes, urgent requests can be handled depending on availability. However, early planning allows for better evaluation and flexibility." },
   { q: "Will choosing a date guarantee a specific outcome for my child?", a: "No. Date selection is a supportive alignment tool, not a guarantee. A child's growth is shaped by upbringing, environment, and care along with timing." },
-  { q: "How will I receive the suggested dates?", a: "The guidance is shared through a personalised report or message, delivered digitally via WhatsApp or email." },
+  { q: "How will I receive the suggested dates?", a: "The guidance is shared through a personalised report or message, delivered digitally over email." },
   { q: "Is my personal information kept confidential?", a: "Absolutely. All details shared for C-Section date guidance are strictly confidential and used only for this consultation." },
 ];
 

@@ -13,9 +13,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["Lora", "serif"],
-        body: ["DM Sans", "sans-serif"],
-        accent: ["Cormorant Garamond", "serif"],
+        display: ["Fraunces", "serif"],
+        body: ["Plus Jakarta Sans", "sans-serif"],
+        accent: ["Fraunces", "serif"],
       },
       colors: {
         brand: {

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { Check } from "lucide-react";
 import DisclaimerLine from "./DisclaimerLine";
 import BookingFormModal from "./BookingFormModal";
 
@@ -12,9 +13,11 @@ const fadeUp = {
   }),
 };
 
-const Feature = ({ icon, text }: { icon: string; text: string }) => (
-  <li className="flex items-start gap-2 text-sm text-brand-body">
-    <span className="mt-0.5">{icon}</span>
+const Feature = ({ text }: { icon?: string; text: string }) => (
+  <li className="flex items-start gap-2.5 text-sm text-brand-body">
+    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-sage/15 text-brand-sage">
+      <Check className="h-3 w-3" strokeWidth={3} />
+    </span>
     <span>{text}</span>
   </li>
 );
@@ -74,9 +77,9 @@ const Pricing = () => {
               <Feature icon="🔢" text="Numerologically Powerful Dates" />
               <Feature icon="🪐" text="Mulank, Bhagyank & Rajyog Analysis" />
               <Feature icon="⏰" text="Shubh Muhurat Timings for Baby Delivery" />
-              <Feature icon="💬" text="15-Day WhatsApp Support for Emergency Guidance" />
+              <Feature icon="💬" text="15-Day Priority Support for Emergency Guidance" />
             </ul>
-            <button onClick={() => openForm(ESSENTIALS_NAME, ESSENTIALS_PRICE)} className="mt-6 block w-full text-center rounded-full border-2 border-brand-rose text-brand-rose font-body font-semibold py-2.5 transition-colors hover:bg-brand-rose hover:text-white">
+            <button onClick={() => openForm(ESSENTIALS_NAME, ESSENTIALS_PRICE)} className="mt-6 block w-full text-center rounded-full border-2 border-brand-rose text-brand-rose font-body font-semibold py-2.5 transition-colors hover:bg-gradient-warm hover:text-white">
               Get Started — ₹{ESSENTIALS_PRICE.toLocaleString("en-IN")}
             </button>
           </motion.div>
@@ -84,7 +87,7 @@ const Pricing = () => {
           {/* Complete - elevated */}
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" custom={1} viewport={{ once: true }}
             className="rounded-card bg-brand-surface border-2 border-brand-rose p-8 flex flex-col relative shadow-[0_0_28px_rgba(196,120,138,0.25)] md:-mt-4 md:mb-[-1rem]">
-            <span className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-brand-rose text-white text-xs font-body font-semibold px-4 py-1">
+            <span className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-gradient-warm text-white text-xs font-body font-semibold px-4 py-1">
               ✦ Most Popular
             </span>
             <div className="text-center mb-4">
@@ -97,9 +100,9 @@ const Pricing = () => {
               <Feature icon="🔤" text="Swar / Alphabet Suggestion as per Nakshatra" />
               <Feature icon="📄" text="Perfect Baby Name Report (50+ Pages)" />
               <Feature icon="🎨" text="Lucky Colors & Numbers" />
-              <Feature icon="💬" text="Upgraded to 21-Day WhatsApp Support" />
+              <Feature icon="💬" text="Upgraded to 21-Day Priority Support" />
             </ul>
-            <button onClick={() => openForm(COMPLETE_NAME, COMPLETE_PRICE)} className="mt-6 block w-full text-center rounded-full bg-brand-rose text-white font-body font-semibold py-3 transition-transform hover:scale-105">
+            <button onClick={() => openForm(COMPLETE_NAME, COMPLETE_PRICE)} className="mt-6 block w-full text-center rounded-full bg-gradient-warm text-white font-body font-semibold py-3 transition-transform hover:scale-105">
               Get Started — ₹{COMPLETE_PRICE.toLocaleString("en-IN")}
             </button>
           </motion.div>
@@ -107,7 +110,7 @@ const Pricing = () => {
 
         <div className="text-center mt-8 space-y-3">
           <p className="text-brand-muted text-sm">
-            All packages include confidential handling of your personal details. Delivery via WhatsApp or Email.
+            All packages include confidential handling of your personal details. Delivery via secure email.
           </p>
           <DisclaimerLine />
         </div>
