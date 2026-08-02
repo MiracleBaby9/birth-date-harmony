@@ -100,17 +100,19 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
     };
   }, [isPaying]);
   const validPackagePrice = getValidPackagePrice(packagePrice);
+  const addonAmount = addonSelected ? ADDON_PRICE : 0;
+  const totalPrice = validPackagePrice === null ? null : validPackagePrice + addonAmount;
 
   // Redirect to the dedicated thank-you page the instant payment is verified.
   useLayoutEffect(() => {
     if (paymentStatus !== "success") return;
     const params = new URLSearchParams();
-    params.set("package", packageName);
-    if (validPackagePrice) params.set("amount", String(validPackagePrice));
+    params.set("package", addonSelected ? `${packageName} + ${ADDON_NAME}` : packageName);
+    if (totalPrice) params.set("amount", String(totalPrice));
     if (paymentId) params.set("paymentId", paymentId);
     if (orderId) params.set("orderId", orderId);
     window.location.replace(`/thank-you?${params.toString()}`);
-  }, [paymentStatus, packageName, validPackagePrice, paymentId, orderId]);
+  }, [paymentStatus, packageName, totalPrice, addonSelected, paymentId, orderId]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
