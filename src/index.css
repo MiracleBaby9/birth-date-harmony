@@ -4,17 +4,23 @@
 
 @layer base {
   :root {
-    --bg: 28 78% 97%;
-    --surface: 16 100% 96%;
-    --card: 14 90% 95%;
-    --rose: 343 34% 62%;
-    --rose-dark: 340 29% 51%;
-    --sage: 148 17% 61%;
-    --gold: 40 56% 58%;
-    --heading: 24 8% 16%;
-    --body: 24 11% 38%;
-    --muted: 24 8% 62%;
-    --border: 16 42% 87%;
+    /* "A baby is on the way" — warm milk, peach, coral, soft mint */
+    --bg: 30 100% 98.5%;
+    --surface: 24 100% 96.5%;
+    --card: 0 0% 100%;
+    --rose: 349 72% 63%;
+    --rose-dark: 346 58% 47%;
+    --sage: 158 34% 58%;
+    --gold: 36 78% 58%;
+    --heading: 20 22% 15%;
+    --body: 20 12% 38%;
+    --muted: 20 10% 58%;
+    --border: 22 62% 91%;
+
+    --gradient-warm: linear-gradient(135deg, hsl(var(--rose)) 0%, hsl(var(--rose-dark)) 55%, hsl(var(--gold)) 130%);
+    --gradient-soft: linear-gradient(180deg, hsl(var(--bg)) 0%, hsl(var(--surface)) 100%);
+    --shadow-soft: 0 18px 45px -22px hsl(var(--rose) / 0.35);
+    --shadow-lift: 0 26px 60px -28px hsl(20 40% 25% / 0.28);
 
     --background: var(--bg);
     --foreground: var(--heading);
@@ -28,13 +34,13 @@
     --destructive-foreground: 0 0% 100%;
     --muted-color: var(--muted);
     --muted-foreground: var(--body);
-    --popover: var(--surface);
+    --popover: var(--card);
     --popover-foreground: var(--heading);
     --card-color: var(--card);
     --card-foreground: var(--heading);
     --input: var(--border);
     --ring: var(--rose);
-    --radius: 1rem;
+    --radius: 1.25rem;
     --border-color: var(--border);
   }
 }
@@ -47,9 +53,32 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-brand-bg text-brand-body font-body antialiased;
+    @apply text-brand-body font-body antialiased;
+    background-color: hsl(var(--bg));
+    background-image:
+      radial-gradient(60% 50% at 12% 0%, hsl(var(--rose) / 0.1) 0%, transparent 70%),
+      radial-gradient(55% 45% at 92% 12%, hsl(var(--gold) / 0.1) 0%, transparent 70%);
+    background-attachment: fixed;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-display text-brand-heading;
+    letter-spacing: -0.015em;
+  }
+}
+
+@layer utilities {
+  .bg-gradient-warm {
+    background-image: var(--gradient-warm);
+  }
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  .shadow-lift {
+    box-shadow: var(--shadow-lift);
+  }
+  .glass-card {
+    background-color: hsl(0 0% 100% / 0.72);
+    backdrop-filter: blur(14px);
+    border: 1px solid hsl(var(--border));
   }
 }
