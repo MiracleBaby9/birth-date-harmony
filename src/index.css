@@ -25,7 +25,7 @@
     --background: var(--bg);
     --foreground: var(--heading);
     --primary: var(--rose);
-    --primary-foreground: 0 0% 100%;
+    --primary-foreground: 340 34% 24%;
     --secondary: var(--surface);
     --secondary-foreground: var(--heading);
     --accent: var(--sage);
