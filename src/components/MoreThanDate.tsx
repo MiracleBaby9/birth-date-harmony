@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import DisclaimerLine from "./DisclaimerLine";
-import { getWhatsAppLink } from "@/lib/constants";
 import scheduledDateImg from "@/assets/scheduled-date.jpg";
 
 const fadeUp = {
@@ -17,7 +16,7 @@ const MoreThanDate = () => (
           variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
           className="relative flex items-center justify-center"
         >
-          <div className="relative w-full max-w-md aspect-square rounded-card overflow-hidden shadow-[0_20px_50px_-15px_rgba(196,120,138,0.35)] border border-brand-rose/20">
+          <div className="relative w-full max-w-md aspect-square rounded-card overflow-hidden shadow-lift border border-brand-rose/20">
             <img
               src={scheduledDateImg}
               alt="Mother gently holding newborn baby's hand surrounded by marigold petals"
@@ -53,9 +52,7 @@ const MoreThanDate = () => (
               With multiple possible dates suggested medically, selecting one can feel overwhelming. Numerology-based guidance helps narrow down suitable options, offering clarity and confidence in your decision.
             </p>
             <a
-              href={getWhatsAppLink()}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#pricing"
               className="inline-block rounded-full bg-brand-rose px-6 py-2.5 text-sm font-body font-semibold text-white transition-transform hover:scale-105"
             >
               Get My C-Section Baby Dates Now

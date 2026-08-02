@@ -1,9 +1,8 @@
 import { motion } from "framer-motion";
 import DisclaimerLine from "./DisclaimerLine";
-import { getWhatsAppLink } from "@/lib/constants";
 
 const FinalCTA = () => (
-  <section className="py-20 bg-gradient-to-r from-[#C4788A] to-[#A85E72]">
+  <section className="py-20 bg-gradient-warm">
     <div className="container text-center space-y-6">
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
