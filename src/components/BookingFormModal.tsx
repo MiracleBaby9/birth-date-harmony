@@ -35,6 +35,7 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
     expectedDeliveryFrom: "",
     expectedDeliveryTo: "",
     city: "",
+    state: "",
     email: "",
     whatsapp: "",
     pinCode: "",
@@ -44,6 +45,7 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
     qualities: "",
   });
 
+  const [addonSelected, setAddonSelected] = useState(true);
   const [paymentStatus, setPaymentStatus] = useState<PaymentStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [paymentId, setPaymentId] = useState("");
