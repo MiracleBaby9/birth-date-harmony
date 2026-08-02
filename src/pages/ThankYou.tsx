@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import { ArrowLeft, CheckCircle, MessageCircle, Copy } from "lucide-react";
+import { ArrowLeft, CheckCircle, Copy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { WHATSAPP_NUMBER } from "@/lib/constants";
 
 const ThankYou = () => {
   const navigate = useNavigate();
@@ -39,16 +38,6 @@ const ThankYou = () => {
       setTimeout(() => setCopied(false), 2000);
     });
   };
-
-  const whatsappText = encodeURIComponent(
-    `✅ *Payment Confirmed — ${packageName}*\n` +
-      `💳 Payment ID: ${paymentId}\n` +
-      `📦 Order ID: ${orderId}\n` +
-      (amount ? `💰 Amount Paid: ${formattedAmount}\n\n` : "\n") +
-      `Hi, I have successfully completed my booking. Please confirm the next steps.`
-  );
-
-  const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappText}`;
 
   return (
     <div className="min-h-screen bg-brand-bg flex flex-col">
@@ -89,7 +78,7 @@ const ThankYou = () => {
 
               <p className="text-sm leading-relaxed text-brand-body">
                 Thank you for booking <strong className="text-brand-heading">{packageName}</strong>.
-                Confirmation details have been sent to your registered email and WhatsApp.
+                Confirmation details have been sent to your registered email.
                 Ankshaastra's team will review your details and share the guidance shortly.
               </p>
 
@@ -150,16 +139,7 @@ const ThankYou = () => {
                 medical advice. Final decisions should always be taken in consultation with your doctor.
               </div>
 
-              <div className="grid gap-3 sm:grid-cols-2 pt-2">
-                <a
-                  href={whatsappLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-3 px-6 transition-transform hover:scale-[1.02]"
-                >
-                  <MessageCircle className="w-4 h-4" />
-                  Chat on WhatsApp
-                </a>
+              <div className="grid gap-3 pt-2">
                 <Button
                   asChild
                   className="w-full rounded-full bg-brand-rose hover:bg-brand-rose-dark text-white font-semibold py-3 h-auto"
