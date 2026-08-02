@@ -76,7 +76,7 @@ const Pricing = () => {
               <Feature icon="⏰" text="Shubh Muhurat Timings for Baby Delivery" />
               <Feature icon="💬" text="15-Day Priority Support for Emergency Guidance" />
             </ul>
-            <button onClick={() => openForm(ESSENTIALS_NAME, ESSENTIALS_PRICE)} className="mt-6 block w-full text-center rounded-full border-2 border-brand-rose text-brand-rose font-body font-semibold py-2.5 transition-colors hover:bg-brand-rose hover:text-white">
+            <button onClick={() => openForm(ESSENTIALS_NAME, ESSENTIALS_PRICE)} className="mt-6 block w-full text-center rounded-full border-2 border-brand-rose text-brand-rose font-body font-semibold py-2.5 transition-colors hover:bg-gradient-warm hover:text-white">
               Get Started — ₹{ESSENTIALS_PRICE.toLocaleString("en-IN")}
             </button>
           </motion.div>
@@ -84,7 +84,7 @@ const Pricing = () => {
           {/* Complete - elevated */}
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" custom={1} viewport={{ once: true }}
             className="rounded-card bg-brand-surface border-2 border-brand-rose p-8 flex flex-col relative shadow-[0_0_28px_rgba(196,120,138,0.25)] md:-mt-4 md:mb-[-1rem]">
-            <span className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-brand-rose text-white text-xs font-body font-semibold px-4 py-1">
+            <span className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-gradient-warm text-white text-xs font-body font-semibold px-4 py-1">
               ✦ Most Popular
             </span>
             <div className="text-center mb-4">
@@ -99,7 +99,7 @@ const Pricing = () => {
               <Feature icon="🎨" text="Lucky Colors & Numbers" />
               <Feature icon="💬" text="Upgraded to 21-Day Priority Support" />
             </ul>
-            <button onClick={() => openForm(COMPLETE_NAME, COMPLETE_PRICE)} className="mt-6 block w-full text-center rounded-full bg-brand-rose text-white font-body font-semibold py-3 transition-transform hover:scale-105">
+            <button onClick={() => openForm(COMPLETE_NAME, COMPLETE_PRICE)} className="mt-6 block w-full text-center rounded-full bg-gradient-warm text-white font-body font-semibold py-3 transition-transform hover:scale-105">
               Get Started — ₹{COMPLETE_PRICE.toLocaleString("en-IN")}
             </button>
           </motion.div>
