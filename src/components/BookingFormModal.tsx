@@ -119,7 +119,7 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
     setErrorMessage("");
 
     try {
-      if (validPackagePrice === null) {
+      if (validPackagePrice === null || totalPrice === null) {
         throw new Error("Invalid package price. Please check the package price environment variable.");
       }
 
@@ -130,7 +130,7 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          amount: validPackagePrice,
+          amount: totalPrice,
           currency: "INR",
           receipt: `pkg_${packageName.replace(/\s+/g, "_").toLowerCase()}_${Date.now()}`,
         }),
