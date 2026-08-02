@@ -40,7 +40,9 @@ const Header = () => {
       style={isScrolled ? { background: 'hsl(30 100% 98.5% / 0.9)', borderBottom: '1px solid hsl(22 62% 91%)' } : {}}
     >
       <div className="container flex items-center justify-between gap-3 py-2.5 sm:py-3">
-        <img src={logo} alt="Ankshaastra" className="h-7 w-auto max-w-[46vw] rounded object-contain sm:h-8 sm:max-w-none" />
+        <span className="inline-flex items-center rounded-xl bg-brand-heading px-2.5 py-1.5 shadow-sm">
+          <img src={logo} alt="Ankshaastra" className="h-6 w-auto max-w-[42vw] object-contain sm:h-7 sm:max-w-none" />
+        </span>
         <a
           href="https://miraclebaby.ankshaastra.com/"
           target="_blank"
