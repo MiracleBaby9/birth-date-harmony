@@ -351,6 +351,61 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
             </div>
           </div>
 
+          {/* Add-on */}
+          <button
+            type="button"
+            onClick={() => setAddonSelected((v) => !v)}
+            aria-pressed={addonSelected}
+            className={`w-full text-left rounded-card border-2 p-4 transition-colors ${
+              addonSelected ? "border-brand-rose bg-brand-rose/5" : "border-brand-border bg-brand-card"
+            }`}
+          >
+            <div className="flex items-start gap-3">
+              <span
+                className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md border-2 text-[11px] font-bold ${
+                  addonSelected ? "border-brand-rose bg-brand-rose text-white" : "border-brand-border text-transparent"
+                }`}
+              >
+                ✓
+              </span>
+              <div className="flex-1">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="font-display text-sm font-semibold text-brand-heading">{ADDON_NAME}</span>
+                  <span className="rounded-full bg-brand-gold/15 px-2 py-0.5 text-[10px] font-semibold text-brand-gold">
+                    ★ Highly Recommended
+                  </span>
+                </div>
+                <p className="mt-1 text-xs text-brand-body">
+                  If your delivery gets preponed (or rescheduled) by your doctor, we recalculate and give you a fresh
+                  set of auspicious dates & muhurat — for just ₹{ADDON_PRICE.toLocaleString("en-IN")}.
+                </p>
+                <p className="font-accent mt-1 text-lg font-bold text-brand-rose">
+                  + ₹{ADDON_PRICE.toLocaleString("en-IN")}
+                </p>
+              </div>
+            </div>
+          </button>
+
+          {/* Order summary */}
+          <div className="rounded-lg border border-brand-border bg-brand-card px-4 py-3 text-sm">
+            <div className="flex justify-between text-brand-body">
+              <span>{packageName}</span>
+              <span className="font-accent">₹{(validPackagePrice ?? packagePrice).toLocaleString("en-IN")}</span>
+            </div>
+            {addonSelected && (
+              <div className="mt-1 flex justify-between text-brand-body">
+                <span>{ADDON_NAME}</span>
+                <span className="font-accent">₹{ADDON_PRICE.toLocaleString("en-IN")}</span>
+              </div>
+            )}
+            <div className="mt-2 flex justify-between border-t border-brand-border pt-2 font-semibold text-brand-heading">
+              <span>Total</span>
+              <span className="font-accent text-lg">
+                ₹{(totalPrice ?? packagePrice + addonAmount).toLocaleString("en-IN")}
+              </span>
+            </div>
+          </div>
+
           {/* Error */}
           {paymentStatus === "error" && errorMessage && (
             <div className="rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
@@ -378,7 +433,7 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
                 : paymentStatus === "verifying"
                 ? "Verifying…"
                 : "Awaiting Payment…"
-              : `Pay Securely — ₹${(validPackagePrice ?? packagePrice).toLocaleString("en-IN")}`}
+              : `Pay Securely — ₹${(totalPrice ?? packagePrice + addonAmount).toLocaleString("en-IN")}`}
           </Button>
 
           <div className="flex items-center justify-center gap-2 text-[10px] text-brand-muted">
