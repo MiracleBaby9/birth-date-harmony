@@ -17,6 +17,9 @@ interface BookingFormModalProps {
 
 const QUALITIES = ["Success", "Wealth", "Leadership", "Spirituality", "Health", "All"];
 
+const ADDON_NAME = "Delivery Date Change Protection";
+const ADDON_PRICE = 737;
+
 type PaymentStatus = "idle" | "creating" | "paying" | "verifying" | "success" | "error";
 
 const getValidPackagePrice = (price: number) =>
@@ -32,6 +35,7 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
     expectedDeliveryFrom: "",
     expectedDeliveryTo: "",
     city: "",
+    state: "",
     email: "",
     whatsapp: "",
     pinCode: "",
@@ -41,6 +45,7 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
     qualities: "",
   });
 
+  const [addonSelected, setAddonSelected] = useState(true);
   const [paymentStatus, setPaymentStatus] = useState<PaymentStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [paymentId, setPaymentId] = useState("");
@@ -65,6 +70,7 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
         setForm((p) => ({
           ...p,
           city: office.District || office.Block || office.Name || p.city,
+          state: office.State || p.state,
         }));
         setPinLookup("found");
       } else {
@@ -94,24 +100,26 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
     };
   }, [isPaying]);
   const validPackagePrice = getValidPackagePrice(packagePrice);
+  const addonAmount = addonSelected ? ADDON_PRICE : 0;
+  const totalPrice = validPackagePrice === null ? null : validPackagePrice + addonAmount;
 
   // Redirect to the dedicated thank-you page the instant payment is verified.
   useLayoutEffect(() => {
     if (paymentStatus !== "success") return;
     const params = new URLSearchParams();
-    params.set("package", packageName);
-    if (validPackagePrice) params.set("amount", String(validPackagePrice));
+    params.set("package", addonSelected ? `${packageName} + ${ADDON_NAME}` : packageName);
+    if (totalPrice) params.set("amount", String(totalPrice));
     if (paymentId) params.set("paymentId", paymentId);
     if (orderId) params.set("orderId", orderId);
     window.location.replace(`/thank-you?${params.toString()}`);
-  }, [paymentStatus, packageName, validPackagePrice, paymentId, orderId]);
+  }, [paymentStatus, packageName, totalPrice, addonSelected, paymentId, orderId]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage("");
 
     try {
-      if (validPackagePrice === null) {
+      if (validPackagePrice === null || totalPrice === null) {
         throw new Error("Invalid package price. Please check the package price environment variable.");
       }
 
@@ -122,7 +130,7 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          amount: validPackagePrice,
+          amount: totalPrice,
           currency: "INR",
           receipt: `pkg_${packageName.replace(/\s+/g, "_").toLowerCase()}_${Date.now()}`,
         }),
@@ -176,7 +184,9 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
                   razorpay_signature: response.razorpay_signature,
                   booking: form,
                   packageName,
-                  amount: validPackagePrice,
+                  addon: addonSelected ? { name: ADDON_NAME, price: ADDON_PRICE } : null,
+                  packageAmount: validPackagePrice,
+                  amount: totalPrice,
                 }),
                 
               });
@@ -277,9 +287,13 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
                 placeholder="110001"
                 className="h-9 text-sm"
               />
-              {pinLookup === "loading" && <p className="text-[10px] text-brand-muted">Looking up city…</p>}
-              {pinLookup === "found" && <p className="text-[10px] text-emerald-600">✓ City auto-filled</p>}
-              {pinLookup === "notfound" && <p className="text-[10px] text-amber-600">Couldn't auto-detect — please enter city manually.</p>}
+              {pinLookup === "loading" && <p className="text-[10px] text-brand-muted">Looking up city & state…</p>}
+              {pinLookup === "found" && <p className="text-[10px] text-emerald-600">✓ City & state auto-filled</p>}
+              {pinLookup === "notfound" && <p className="text-[10px] text-amber-600">Couldn't auto-detect — please enter city & state manually.</p>}
+            </div>
+            <div className="space-y-1">
+              <Label className="text-xs text-brand-body">State *</Label>
+              <Input required value={form.state} onChange={(e) => update("state", e.target.value)} placeholder="State" className="h-9 text-sm" />
             </div>
           </div>
 
@@ -337,6 +351,61 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
             </div>
           </div>
 
+          {/* Add-on */}
+          <button
+            type="button"
+            onClick={() => setAddonSelected((v) => !v)}
+            aria-pressed={addonSelected}
+            className={`w-full text-left rounded-card border-2 p-4 transition-colors ${
+              addonSelected ? "border-brand-rose bg-brand-rose/5" : "border-brand-border bg-brand-card"
+            }`}
+          >
+            <div className="flex items-start gap-3">
+              <span
+                className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md border-2 text-[11px] font-bold ${
+                  addonSelected ? "border-brand-rose bg-brand-rose text-white" : "border-brand-border text-transparent"
+                }`}
+              >
+                ✓
+              </span>
+              <div className="flex-1">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="font-display text-sm font-semibold text-brand-heading">{ADDON_NAME}</span>
+                  <span className="rounded-full bg-brand-gold/15 px-2 py-0.5 text-[10px] font-semibold text-brand-gold">
+                    ★ Highly Recommended
+                  </span>
+                </div>
+                <p className="mt-1 text-xs text-brand-body">
+                  If your delivery gets preponed (or rescheduled) by your doctor, we recalculate and give you a fresh
+                  set of auspicious dates & muhurat — for just ₹{ADDON_PRICE.toLocaleString("en-IN")}.
+                </p>
+                <p className="font-accent mt-1 text-lg font-bold text-brand-rose">
+                  + ₹{ADDON_PRICE.toLocaleString("en-IN")}
+                </p>
+              </div>
+            </div>
+          </button>
+
+          {/* Order summary */}
+          <div className="rounded-lg border border-brand-border bg-brand-card px-4 py-3 text-sm">
+            <div className="flex justify-between text-brand-body">
+              <span>{packageName}</span>
+              <span className="font-accent">₹{(validPackagePrice ?? packagePrice).toLocaleString("en-IN")}</span>
+            </div>
+            {addonSelected && (
+              <div className="mt-1 flex justify-between text-brand-body">
+                <span>{ADDON_NAME}</span>
+                <span className="font-accent">₹{ADDON_PRICE.toLocaleString("en-IN")}</span>
+              </div>
+            )}
+            <div className="mt-2 flex justify-between border-t border-brand-border pt-2 font-semibold text-brand-heading">
+              <span>Total</span>
+              <span className="font-accent text-lg">
+                ₹{(totalPrice ?? packagePrice + addonAmount).toLocaleString("en-IN")}
+              </span>
+            </div>
+          </div>
+
           {/* Error */}
           {paymentStatus === "error" && errorMessage && (
             <div className="rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
@@ -364,7 +433,7 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
                 : paymentStatus === "verifying"
                 ? "Verifying…"
                 : "Awaiting Payment…"
-              : `Pay Securely — ₹${(validPackagePrice ?? packagePrice).toLocaleString("en-IN")}`}
+              : `Pay Securely — ₹${(totalPrice ?? packagePrice + addonAmount).toLocaleString("en-IN")}`}
           </Button>
 
           <div className="flex items-center justify-center gap-2 text-[10px] text-brand-muted">
