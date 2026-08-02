@@ -9,7 +9,7 @@ const features = [
   { label: "Swar / Alphabet Suggestion", e: false, c: true },
   { label: "Perfect Baby Name Report (50+ Pages)", e: false, c: true },
   { label: "Lucky Colors & Numbers", e: false, c: true },
-  { label: "WhatsApp Support", e: "15 Days", c: "21 Days" },
+  { label: "Priority Support", e: "15 Days", c: "21 Days" },
 ];
 
 const Cell = ({ v }: { v: boolean | string }) => {

@@ -32,7 +32,7 @@ const testimonials = [
     name: "Rohit & Simran K.",
     location: "Jaipur",
     rating: 5,
-    text: "WhatsApp support was outstanding. Every question was answered patiently. The name report was a beautiful bonus. Thank you, Himansshu Ji!",
+    text: "Support was outstanding. Every question was answered patiently. The name report was a beautiful bonus. Thank you, Himansshu Ji!",
   },
 ];
 
