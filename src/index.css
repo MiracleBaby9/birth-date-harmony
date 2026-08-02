@@ -70,6 +70,10 @@
   .bg-gradient-warm {
     background-image: var(--gradient-warm);
   }
+  .bg-gradient-warm,
+  .bg-gradient-warm * {
+    color: hsl(340 34% 24%) !important;
+  }
   .shadow-soft {
     box-shadow: var(--shadow-soft);
   }
