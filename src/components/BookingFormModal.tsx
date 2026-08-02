@@ -70,6 +70,7 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
         setForm((p) => ({
           ...p,
           city: office.District || office.Block || office.Name || p.city,
+          state: office.State || p.state,
         }));
         setPinLookup("found");
       } else {
