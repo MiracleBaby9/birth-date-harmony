@@ -1,4 +1,5 @@
 import { motion, type Variants } from "framer-motion";
+import { Star, Baby, Sparkles, ShieldCheck } from "lucide-react";
 import DisclaimerLine from "./DisclaimerLine";
 import heroBg from "@/assets/hero-bg.jpg";
 
@@ -16,10 +17,10 @@ const fadeUpVariants: Variants = {
 };
 
 const trustItems = [
-  { icon: "🌟", bold: "4.9 Star", sub: "User Rating", color: "text-brand-gold" },
-  { icon: "👶", bold: "Thousands", sub: "Happy Parents", color: "text-brand-rose" },
-  { icon: "🔮", bold: "99%+", sub: "Felt Confident", color: "text-brand-sage" },
-  { icon: "🛡️", bold: "100%", sub: "Reliable Results", color: "text-brand-rose" },
+  { Icon: Star, bold: "4.9 Star", sub: "User Rating", color: "text-brand-gold" },
+  { Icon: Baby, bold: "Thousands", sub: "Happy Parents", color: "text-brand-rose" },
+  { Icon: Sparkles, bold: "99%+", sub: "Felt Confident", color: "text-brand-sage" },
+  { Icon: ShieldCheck, bold: "100%", sub: "Reliable Results", color: "text-brand-rose" },
 ];
 
 const Hero = () => (
@@ -96,7 +97,7 @@ const Hero = () => (
             key={i}
             className="flex flex-col items-center gap-1.5 glass-card rounded-2xl px-3 py-4 shadow-soft transition-transform hover:-translate-y-0.5"
           >
-            <span className={`text-2xl ${t.color}`}>{t.icon}</span>
+            <t.Icon className={`h-6 w-6 ${t.color}`} strokeWidth={1.75} />
             <span className="font-body font-bold text-brand-heading text-sm leading-tight">{t.bold}</span>
             <span className="text-[10px] text-brand-muted leading-tight">{t.sub}</span>
           </div>
