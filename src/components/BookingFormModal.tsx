@@ -287,9 +287,13 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
                 placeholder="110001"
                 className="h-9 text-sm"
               />
-              {pinLookup === "loading" && <p className="text-[10px] text-brand-muted">Looking up city…</p>}
-              {pinLookup === "found" && <p className="text-[10px] text-emerald-600">✓ City auto-filled</p>}
-              {pinLookup === "notfound" && <p className="text-[10px] text-amber-600">Couldn't auto-detect — please enter city manually.</p>}
+              {pinLookup === "loading" && <p className="text-[10px] text-brand-muted">Looking up city & state…</p>}
+              {pinLookup === "found" && <p className="text-[10px] text-emerald-600">✓ City & state auto-filled</p>}
+              {pinLookup === "notfound" && <p className="text-[10px] text-amber-600">Couldn't auto-detect — please enter city & state manually.</p>}
+            </div>
+            <div className="space-y-1">
+              <Label className="text-xs text-brand-body">State *</Label>
+              <Input required value={form.state} onChange={(e) => update("state", e.target.value)} placeholder="State" className="h-9 text-sm" />
             </div>
           </div>
 
