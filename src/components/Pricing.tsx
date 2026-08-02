@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { Check } from "lucide-react";
 import DisclaimerLine from "./DisclaimerLine";
 import BookingFormModal from "./BookingFormModal";
 
@@ -12,9 +13,11 @@ const fadeUp = {
   }),
 };
 
-const Feature = ({ icon, text }: { icon: string; text: string }) => (
-  <li className="flex items-start gap-2 text-sm text-brand-body">
-    <span className="mt-0.5">{icon}</span>
+const Feature = ({ text }: { icon?: string; text: string }) => (
+  <li className="flex items-start gap-2.5 text-sm text-brand-body">
+    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-sage/15 text-brand-sage">
+      <Check className="h-3 w-3" strokeWidth={3} />
+    </span>
     <span>{text}</span>
   </li>
 );
