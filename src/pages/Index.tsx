@@ -36,6 +36,8 @@ const Index = () => (
     <FinalCTA />
     <Footer />
     <MobileCTABar />
+    <WhatsAppFloat />
+
   </>
 );
 
