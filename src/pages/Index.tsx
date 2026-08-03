@@ -15,6 +15,7 @@ import Footer from "@/components/Footer";
 import MobileCTABar from "@/components/MobileCTABar";
 import StickyDisclaimer from "@/components/StickyDisclaimer";
 import DisclaimerPopup from "@/components/DisclaimerPopup";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
 
 const Index = () => (
   <>
