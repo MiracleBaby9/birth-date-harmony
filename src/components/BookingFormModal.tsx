@@ -54,6 +54,7 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
     preferredDeity: "",
     hospitalName: "",
     qualities: "",
+    notes: "",
   });
 
   const [addonSelected, setAddonSelected] = useState(true);
@@ -316,9 +317,16 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
               />
             </div>
           </div>
-          <p className="text-[11px] text-brand-gold">
-            Please keep the window within {MAX_WINDOW_DAYS} days (near-to-near dates) for the most accurate muhurat calculation.
-          </p>
+          <div className="rounded-lg border border-brand-gold/40 bg-brand-gold/10 px-3 py-2 space-y-1">
+            <p className="text-[11.5px] font-semibold text-brand-gold leading-snug">
+              Please keep the window within {MAX_WINDOW_DAYS} days (near-to-near dates) for the most accurate muhurat calculation.
+            </p>
+            <p className="text-[11.5px] text-brand-body leading-snug">
+              Booking in advance, or window not decided yet / awaiting sonography? Just pick any tentative dates and write
+              “advance booking — dates awaited” in the Notes box below. We'll finalise once your sonography report is ready.
+            </p>
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="space-y-1">
               <Label className="text-xs text-brand-body">Delivery Pin Code *</Label>
@@ -392,6 +400,16 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
                   </SelectContent>
                 </Select>
               </div>
+            </div>
+            <div className="space-y-1 mt-3">
+              <Label className="text-xs text-brand-body">Notes / Special Requests</Label>
+              <textarea
+                value={form.notes}
+                onChange={(e) => update("notes", e.target.value)}
+                rows={3}
+                placeholder="e.g. Advance booking — delivery window not decided yet, awaiting sonography report."
+                className="w-full rounded-md border border-brand-border bg-background px-3 py-2 text-sm text-brand-body placeholder:text-brand-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              />
             </div>
           </div>
 
