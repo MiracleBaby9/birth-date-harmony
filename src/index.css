@@ -6,20 +6,20 @@
   :root {
     /* "A baby is on the way" — warm milk, peach, coral, soft mint */
     --bg: 350 100% 99%;
-    --surface: 348 78% 97%;
+    --surface: 346 42% 97.5%;
     --card: 0 0% 100%;
-    --rose: 348 76% 82%;
-    --rose-dark: 348 62% 72%;
+    --rose: 348 52% 85%;
+    --rose-dark: 348 40% 70%;
     --sage: 158 30% 66%;
-    --gold: 36 66% 72%;
+    --gold: 32 48% 52%;
     --heading: 340 16% 24%;
     --body: 340 10% 42%;
     --muted: 340 8% 60%;
-    --border: 348 55% 93%;
+    --border: 346 30% 94%;
 
-    --gradient-warm: linear-gradient(135deg, hsl(348 82% 87%) 0%, hsl(var(--rose)) 55%, hsl(348 60% 78%) 130%);
+    --gradient-warm: linear-gradient(135deg, hsl(346 55% 90%) 0%, hsl(var(--rose)) 55%, hsl(348 42% 80%) 130%);
     --gradient-soft: linear-gradient(180deg, hsl(var(--bg)) 0%, hsl(var(--surface)) 100%);
-    --shadow-soft: 0 18px 45px -22px hsl(var(--rose) / 0.45);
+    --shadow-soft: 0 18px 45px -22px hsl(var(--rose) / 0.35);
     --shadow-lift: 0 26px 60px -28px hsl(20 40% 25% / 0.28);
 
     --background: var(--bg);
@@ -56,8 +56,8 @@
     @apply text-brand-body font-body antialiased;
     background-color: hsl(var(--bg));
     background-image:
-      radial-gradient(60% 50% at 12% 0%, hsl(var(--rose) / 0.1) 0%, transparent 70%),
-      radial-gradient(55% 45% at 92% 12%, hsl(var(--gold) / 0.1) 0%, transparent 70%);
+      radial-gradient(60% 50% at 12% 0%, hsl(var(--rose) / 0.07) 0%, transparent 70%),
+      radial-gradient(55% 45% at 92% 12%, hsl(var(--gold) / 0.06) 0%, transparent 70%);
     background-attachment: fixed;
   }
   h1, h2, h3, h4, h5, h6 {
