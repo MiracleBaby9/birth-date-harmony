@@ -27,11 +27,22 @@ const getValidPackagePrice = (price: number) =>
 
 const todayISO = new Date().toISOString().split("T")[0];
 
+const MAX_WINDOW_DAYS = 10;
+
+const addDaysISO = (iso: string, days: number) => {
+  const d = new Date(`${iso}T00:00:00`);
+  if (Number.isNaN(d.getTime())) return "";
+  d.setDate(d.getDate() + days);
+  return d.toISOString().split("T")[0];
+};
+
 const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: BookingFormModalProps) => {
   
   const [form, setForm] = useState({
     motherName: "",
     fatherName: "",
+    motherDob: "",
+    fatherDob: "",
     expectedDeliveryFrom: "",
     expectedDeliveryTo: "",
     city: "",
@@ -119,6 +130,16 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
     setErrorMessage("");
 
     try {
+      const from = form.expectedDeliveryFrom;
+      const to = form.expectedDeliveryTo;
+      if (from && to) {
+        const diff =
+          (new Date(`${to}T00:00:00`).getTime() - new Date(`${from}T00:00:00`).getTime()) / 86400000;
+        if (diff < 0) throw new Error("Delivery window 'To' date cannot be before the 'From' date.");
+        if (diff > MAX_WINDOW_DAYS - 1)
+          throw new Error(`Delivery window cannot exceed ${MAX_WINDOW_DAYS} days. Please choose near-to-near dates.`);
+      }
+
       if (validPackagePrice === null || totalPrice === null) {
         throw new Error("Invalid package price. Please check the package price environment variable.");
       }
@@ -264,6 +285,18 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
             </div>
           </div>
 
+          {/* Parent DOBs */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="space-y-1">
+              <Label className="text-xs text-brand-body">Mother's Date of Birth *</Label>
+              <Input required type="date" max={todayISO} value={form.motherDob} onChange={(e) => update("motherDob", e.target.value)} className="h-9 text-sm" />
+            </div>
+            <div className="space-y-1">
+              <Label className="text-xs text-brand-body">Father's Date of Birth *</Label>
+              <Input required type="date" max={todayISO} value={form.fatherDob} onChange={(e) => update("fatherDob", e.target.value)} className="h-9 text-sm" />
+            </div>
+          </div>
+
           {/* Delivery date + Pin */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="space-y-1">
@@ -272,9 +305,20 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
             </div>
             <div className="space-y-1">
               <Label className="text-xs text-brand-body">Expected Delivery — To *</Label>
-              <Input required type="date" min={form.expectedDeliveryFrom || todayISO} value={form.expectedDeliveryTo} onChange={(e) => update("expectedDeliveryTo", e.target.value)} className="h-9 text-sm" />
+              <Input
+                required
+                type="date"
+                min={form.expectedDeliveryFrom || todayISO}
+                max={form.expectedDeliveryFrom ? addDaysISO(form.expectedDeliveryFrom, MAX_WINDOW_DAYS - 1) : undefined}
+                value={form.expectedDeliveryTo}
+                onChange={(e) => update("expectedDeliveryTo", e.target.value)}
+                className="h-9 text-sm"
+              />
             </div>
           </div>
+          <p className="text-[11px] text-brand-gold">
+            Please keep the window within {MAX_WINDOW_DAYS} days (near-to-near dates) for the most accurate muhurat calculation.
+          </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="space-y-1">
               <Label className="text-xs text-brand-body">Delivery Pin Code *</Label>
