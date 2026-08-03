@@ -77,7 +77,6 @@ const Pricing = () => {
               <Feature icon="🔢" text="Numerologically Powerful Dates" />
               <Feature icon="🪐" text="Mulank, Bhagyank & Rajyog Analysis" />
               <Feature icon="⏰" text="Shubh Muhurat Timings for Baby Delivery" />
-              <Feature icon="💬" text="15-Day Priority Support for Emergency Guidance" />
             </ul>
             <button onClick={() => openForm(ESSENTIALS_NAME, ESSENTIALS_PRICE)} className="mt-6 block w-full text-center rounded-full border-2 border-brand-rose text-brand-rose font-body font-semibold py-2.5 transition-colors hover:bg-gradient-warm hover:text-white">
               Get Started — ₹{ESSENTIALS_PRICE.toLocaleString("en-IN")}
@@ -97,10 +96,15 @@ const Pricing = () => {
             </div>
             <ul className="space-y-3 flex-1">
               <Feature icon="✅" text="Everything in Essentials, plus:" />
-              <Feature icon="🔤" text="Swar / Alphabet Suggestion as per Nakshatra" />
-              <Feature icon="📄" text="Perfect Baby Name Report (50+ Pages)" />
-              <Feature icon="🎨" text="Lucky Colors & Numbers" />
-              <Feature icon="💬" text="Upgraded to 21-Day Priority Support" />
+              <Feature icon="🔤" text="10+ Numerologically Aligned Name Options" />
+              <Feature icon="✍️" text="Already Have a Name? We'll Correct It Too" />
+              <Feature icon="🪐" text="Child's Mulank & Bhagyank Analysis" />
+              <Feature icon="🔍" text="First Name & Full Name Analysis" />
+              <Feature icon="🔢" text="Compound Number Analysis" />
+              <Feature icon="🧮" text="Personal Loshu Grid" />
+              <Feature icon="🔤" text="First Alphabet Analysis" />
+              <Feature icon="📄" text="PDF Report (45+ Pages)" />
+              <Feature icon="📞" text="Call Consultation Included" />
             </ul>
             <button onClick={() => openForm(COMPLETE_NAME, COMPLETE_PRICE)} className="mt-6 block w-full text-center rounded-full bg-gradient-warm text-white font-body font-semibold py-3 transition-transform hover:scale-105">
               Get Started — ₹{COMPLETE_PRICE.toLocaleString("en-IN")}
