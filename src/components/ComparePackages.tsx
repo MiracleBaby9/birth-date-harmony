@@ -6,10 +6,15 @@ const features = [
   { label: "Numerologically Powerful Dates", e: true, c: true },
   { label: "Mulank, Bhagyank & Rajyog Analysis", e: true, c: true },
   { label: "Shubh Muhurat Timings", e: true, c: true },
-  { label: "Swar / Alphabet Suggestion", e: false, c: true },
-  { label: "Perfect Baby Name Report (50+ Pages)", e: false, c: true },
-  { label: "Lucky Colors & Numbers", e: false, c: true },
-  { label: "Priority Support", e: "15 Days", c: "21 Days" },
+  { label: "10+ Numerologically Aligned Name Options", e: false, c: true },
+  { label: "Already Have a Name? We'll Correct It Too", e: false, c: true },
+  { label: "Child's Mulank & Bhagyank Analysis", e: false, c: true },
+  { label: "First Name & Full Name Analysis", e: false, c: true },
+  { label: "Compound Number Analysis", e: false, c: true },
+  { label: "Personal Loshu Grid", e: false, c: true },
+  { label: "First Alphabet Analysis", e: false, c: true },
+  { label: "PDF Report (45+ Pages)", e: false, c: true },
+  { label: "Call Consultation Included", e: false, c: true },
 ];
 
 const Cell = ({ v }: { v: boolean | string }) => {
