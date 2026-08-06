@@ -54,7 +54,7 @@ async function handleIncomingText({ from, senderName, text }) {
 
   await sendWhatsApp(
     from,
-    `🙏 Namaste ${senderName}!\n\nThank you for contacting *Ankshaastra Miracle Baby*.\n\nOur team has received your message and will respond shortly.\n\n📞 For urgent queries: *+91-9667305577*\n📧 Email: *social@ankshaastra.com*`
+    `🙏 Namaste ${senderName}!\n\nThank you for contacting *Ankshaastra Miracle Baby*.\n\nOur team has received your message and will respond shortly.\n\n📞 For urgent queries: *+91-9667305577*\n📧 Email: *miraclebaby@ankshaastra.in*`
   );
 }
 
