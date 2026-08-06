@@ -320,7 +320,8 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
           </div>
           <div className="rounded-lg border border-brand-gold/40 bg-brand-gold/10 px-3 py-2 space-y-1">
             <p className="text-[11.5px] font-semibold text-brand-gold leading-snug">
-              Please keep the window within {MAX_WINDOW_DAYS} days (near-to-near dates) for the most accurate muhurat calculation.
+              A maximum window of {MAX_WINDOW_DAYS} days is allowed (near-to-near dates) — this keeps the muhurat calculation
+              precise. Windows longer than {MAX_WINDOW_DAYS} days can't be selected.
             </p>
             <p className="text-[11.5px] text-brand-body leading-snug">
               Booking in advance, or window not decided yet / awaiting sonography? Just pick any tentative dates and write
