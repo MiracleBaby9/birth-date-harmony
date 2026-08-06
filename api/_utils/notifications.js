@@ -238,7 +238,7 @@
 import nodemailer from "nodemailer";
 
 const contactPhone = "+91-9667305577";
-const contactEmail = "social@ankshaastra.com";
+const contactEmail = "miraclebaby@ankshaastra.in";
 
 const normalizeMobile = (value = "") => {
   const digits = value.toString().replace(/\D/g, "");
