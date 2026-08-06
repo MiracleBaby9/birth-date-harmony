@@ -27,7 +27,7 @@ const getValidPackagePrice = (price: number) =>
 
 const todayISO = new Date().toISOString().split("T")[0];
 
-const MAX_WINDOW_DAYS = 10;
+const MAX_WINDOW_DAYS = 7;
 
 const addDaysISO = (iso: string, days: number) => {
   const d = new Date(`${iso}T00:00:00`);
@@ -53,6 +53,7 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
     avoidOrPreferNumbers: "",
     preferredDeity: "",
     hospitalName: "",
+    lastCheckupDate: "",
     qualities: "",
     notes: "",
   });
