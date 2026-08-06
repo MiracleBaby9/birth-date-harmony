@@ -363,6 +363,21 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: Boo
             </div>
           </div>
 
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="space-y-1">
+              <Label className="text-xs text-brand-body">Last Doctor Visit / Sonography Date *</Label>
+              <Input
+                required
+                type="date"
+                max={todayISO}
+                value={form.lastCheckupDate}
+                onChange={(e) => update("lastCheckupDate", e.target.value)}
+                className="h-9 text-sm"
+              />
+            </div>
+          </div>
+
+
           {/* Contact */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="space-y-1">
