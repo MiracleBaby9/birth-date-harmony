@@ -1,5 +1,7 @@
 
 
+
+
 // import type { VercelRequest, VercelResponse } from "@vercel/node";
 // import crypto from "crypto";
 // import { sendBookingNotifications } from "./_utils/notifications.js";
@@ -10,6 +12,57 @@
 // // Body: { razorpay_order_id, razorpay_payment_id, razorpay_signature }
 // // Returns: { verified: true } or 400 error
 // // ---------------------------------------------------------------------------
+
+// // FIX: this route writes the order directly into the hub's shared
+// // `orders` table, bypassing the hub's `operations/order-ingest` API
+// // entirely. That API is the only place that also triggers invoice
+// // generation — a direct table insert has no equivalent, so orders created
+// // here never got an automatic invoice (same gap found and fixed on
+// // Empower's api/verify-payment equivalent). `triggerHubInvoice()` calls a
+// // small dedicated hub endpoint (`/api/operations/trigger-invoice`) right
+// // after the order is created, using the same generate-now-else-queue logic
+// // the hub's own checkout uses. Best-effort/non-blocking: if this call
+// // fails, it's logged and swallowed — it must never break this route's
+// // existing response or the email/WhatsApp notifications below.
+// const HUB_API_BASE = (process.env.HUB_API_BASE || "https://ankshaastra.com/api").replace(/\/$/, "");
+// const HUB_API_KEY = process.env.HUB_API_KEY || process.env.OPERATIONS_API_KEY;
+
+// async function triggerHubInvoice(orderId: string | null | undefined, paymentId?: string) {
+//   if (!orderId) return;
+//   if (!HUB_API_KEY) {
+//     console.warn("[verify-payment] HUB_API_KEY not set — cannot trigger invoice generation for order:", orderId);
+//     return;
+//   }
+
+//   try {
+//     const controller = new AbortController();
+//     // FIX: was 15000ms — too short. Invoice generation on the hub does PDF
+//     // creation + storage upload + QR code + customer email + admin email,
+//     // all synchronously before responding. Observed real completion time
+//     // was ~23s, so the old 15s timeout was aborting requests that would
+//     // have succeeded — the invoice may have still been created on the hub
+//     // even though this call reported failure, since aborting the client
+//     // fetch doesn't necessarily stop the hub's serverless function from
+//     // finishing its work.
+//     const timeout = setTimeout(() => controller.abort(), 45000);
+//     const response = await fetch(`${HUB_API_BASE}/operations/trigger-invoice`, {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//         "x-api-key": HUB_API_KEY,
+//       },
+//       body: JSON.stringify({ orderId, paymentId: paymentId || undefined }),
+//       signal: controller.signal,
+//     }).finally(() => clearTimeout(timeout));
+
+//     if (!response.ok) {
+//       const text = await response.text().catch(() => "");
+//       console.error("[verify-payment] trigger-invoice call failed:", response.status, text);
+//     }
+//   } catch (err) {
+//     console.error("[verify-payment] trigger-invoice call threw:", err);
+//   }
+// }
 
 // export default async function handler(
 //   req: VercelRequest,
@@ -165,8 +218,11 @@
 
 //   // -------------------------------------------------------------------------
 //   // Step 2: Save the order, linked to the customer above via customer_id.
+//   // FIX: added `.select("id").single()` so we get the new order's id back —
+//   // needed to call triggerHubInvoice() below. The insert itself is
+//   // unchanged.
 //   // -------------------------------------------------------------------------
-//   const { error: insertError } = await supabase
+//   const { data: insertedOrder, error: insertError } = await supabase
 //   .from("orders")
 //   .insert({
 //     source_website: "miraclebaby.ankshaastra.com",
@@ -192,12 +248,17 @@
 //     razorpay_order_id,
 //     razorpay_payment_id,
 //     razorpay_signature,
-//   });
+//   })
+//   .select("id")
+//   .single();
 
 //   if (insertError) {
 //     console.error("Supabase insert failed:", insertError);
 //   } else {
 //     console.log("Order saved successfully in Supabase");
+//     // FIX: this is the missing step — nothing previously told the hub to
+//     // generate an invoice for this order.
+//     await triggerHubInvoice(insertedOrder?.id, razorpay_payment_id);
 //   }
 
 //   // Send email + WhatsApp notifications
@@ -217,6 +278,7 @@
 //     notifications: notificationResult,
 //   });
 // }
+
 
 
 import type { VercelRequest, VercelResponse } from "@vercel/node";
@@ -316,6 +378,7 @@ export default async function handler(
     booking = {},
     packageName = "C-Section Baby Date Guidance",
     amount,
+    addon = null,
   } = req.body as {
     razorpay_order_id: string;
     razorpay_payment_id: string;
@@ -323,6 +386,7 @@ export default async function handler(
     booking?: any;
     packageName?: string;
     amount?: number;
+    addon?: { name: string; price: number } | null;
   };
 
   if (
@@ -418,7 +482,9 @@ export default async function handler(
           whatsapp: customerPhone,
           source_website: "miraclebaby.ankshaastra.com",
           lifecycle_stage: "Completed",
-          metadata: booking,
+          // FIX: addon (e.g. "Delivery Date Change Protection") was sent by
+          // the frontend but never saved anywhere — merged into metadata now.
+          metadata: { ...booking, addon },
         })
         .select("id")
         .single();
@@ -460,7 +526,9 @@ export default async function handler(
     order_type: "service",
     workflow_stage: "payment_received",
 
-    metadata: booking,
+    // FIX: addon (e.g. "Delivery Date Change Protection") was sent by the
+    // frontend but never saved anywhere — merged into metadata now.
+    metadata: { ...booking, addon },
 
     razorpay_order_id,
     razorpay_payment_id,
