@@ -63,6 +63,8 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice, addon
     fatherName: "",
     motherDob: "",
     fatherDob: "",
+    motherProfession: "",
+    fatherProfession: "",
     expectedDeliveryFrom: "",
     expectedDeliveryTo: "",
     city: "",
@@ -320,6 +322,18 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice, addon
             <div className="space-y-1">
               <Label className="text-xs text-brand-body">Father's Date of Birth *</Label>
               <Input required type="date" max={todayISO} value={form.fatherDob} onChange={(e) => update("fatherDob", e.target.value)} className="h-9 text-sm" />
+            </div>
+          </div>
+
+          {/* Parent Professions */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="space-y-1">
+              <Label className="text-xs text-brand-body">Mother's Profession *</Label>
+              <Input required value={form.motherProfession} onChange={(e) => update("motherProfession", e.target.value)} placeholder="e.g. Teacher, Doctor, Homemaker" className="h-9 text-sm" />
+            </div>
+            <div className="space-y-1">
+              <Label className="text-xs text-brand-body">Father's Profession *</Label>
+              <Input required value={form.fatherProfession} onChange={(e) => update("fatherProfession", e.target.value)} placeholder="e.g. Engineer, Business" className="h-9 text-sm" />
             </div>
           </div>
 

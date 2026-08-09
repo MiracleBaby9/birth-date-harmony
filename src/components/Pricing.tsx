@@ -103,13 +103,14 @@ const TIERS: Tier[] = [
     badge: "✦ Complete Blueprint",
     features: [
       "Everything in Advanced, plus:",
+      "10+ Extra Numerologically Aligned Names",
       "Nickname Analysis",
       "Ideal Career Path Analysis",
       "Lucky Direction (Feng Shui)",
       "Lucky Colors Analysis",
       "Lucky Numbers Analysis",
     ],
-    addons: [EXTRA_NAMES_ADDON, PROTECTION_ADDON],
+    addons: [PROTECTION_ADDON],
   },
 ];
 
