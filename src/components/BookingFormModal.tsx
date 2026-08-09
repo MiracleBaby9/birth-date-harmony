@@ -133,19 +133,23 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice, addon
     };
   }, [isPaying]);
   const validPackagePrice = getValidPackagePrice(packagePrice);
-  const addonAmount = addonSelected ? ADDON_PRICE : 0;
+  const chosenAddons = activeAddons.filter((a) => selectedAddonIds.includes(a.id));
+  const addonAmount = chosenAddons.reduce((sum, a) => sum + a.price, 0);
   const totalPrice = validPackagePrice === null ? null : validPackagePrice + addonAmount;
+  const addonLabel = chosenAddons.map((a) => a.name).join(" + ");
+  const toggleAddon = (id: string) =>
+    setSelectedAddonIds((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
 
   // Redirect to the dedicated thank-you page the instant payment is verified.
   useLayoutEffect(() => {
     if (paymentStatus !== "success") return;
     const params = new URLSearchParams();
-    params.set("package", addonSelected ? `${packageName} + ${ADDON_NAME}` : packageName);
+    params.set("package", addonLabel ? `${packageName} + ${addonLabel}` : packageName);
     if (totalPrice) params.set("amount", String(totalPrice));
     if (paymentId) params.set("paymentId", paymentId);
     if (orderId) params.set("orderId", orderId);
     window.location.replace(`/thank-you?${params.toString()}`);
-  }, [paymentStatus, packageName, totalPrice, addonSelected, paymentId, orderId]);
+  }, [paymentStatus, packageName, totalPrice, addonLabel, paymentId, orderId]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
