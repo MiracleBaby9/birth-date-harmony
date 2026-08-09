@@ -8,17 +8,36 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { loadRazorpayScript, openRazorpayCheckout } from "@/lib/razorpay";
 import { CREATE_ORDER_URL, VERIFY_PAYMENT_URL } from "@/lib/payment-config";
 
+export interface PackageAddon {
+  id: string;
+  name: string;
+  price: number;
+  description: string;
+  recommended?: boolean;
+}
+
 interface BookingFormModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   packageName: string;
   packagePrice: number;
+  addons?: PackageAddon[];
 }
 
 const QUALITIES = ["Success", "Wealth", "Leadership", "Spirituality", "Health", "All"];
 
-const ADDON_NAME = "Delivery Date Change Protection";
-const ADDON_PRICE = 737;
+const DEFAULT_ADDONS: PackageAddon[] = [
+  {
+    id: "protection",
+    name: "Delivery Date Change Protection",
+    price: 1367,
+    description:
+      "If your delivery gets preponed (or rescheduled) by your doctor, we recalculate and give you a fresh set of auspicious dates & muhurat.",
+    recommended: true,
+  },
+];
+
+
 
 type PaymentStatus = "idle" | "creating" | "paying" | "verifying" | "success" | "error";
 
