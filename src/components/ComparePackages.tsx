@@ -21,7 +21,7 @@ const features: { label: string; s: Val; a: Val; c: Val }[] = [
   { label: "Ideal Career Path Analysis", s: false, a: false, c: true },
   { label: "Lucky Direction (Feng Shui)", s: false, a: false, c: true },
   { label: "Lucky Colors & Lucky Numbers Analysis", s: false, a: false, c: true },
-  { label: "10+ Extra Aligned Names", s: false, a: false, c: "Add-on ₹1,367" },
+  { label: "10+ Extra Aligned Names", s: false, a: false, c: true },
   { label: "Delivery Date Change Protection", s: "Add-on ₹1,367", a: "Add-on ₹1,367", c: "Add-on ₹1,367" },
 ];
 
