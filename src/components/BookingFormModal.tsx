@@ -63,6 +63,8 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice, addon
     fatherName: "",
     motherDob: "",
     fatherDob: "",
+    motherProfession: "",
+    fatherProfession: "",
     expectedDeliveryFrom: "",
     expectedDeliveryTo: "",
     city: "",
