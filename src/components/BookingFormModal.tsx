@@ -78,7 +78,7 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice, addon
     notes: "",
   });
 
-  const [addonSelected, setAddonSelected] = useState(true);
+  const [selectedAddonIds, setSelectedAddonIds] = useState<string[]>(() => activeAddons.map((a) => a.id));
   const [paymentStatus, setPaymentStatus] = useState<PaymentStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [paymentId, setPaymentId] = useState("");
