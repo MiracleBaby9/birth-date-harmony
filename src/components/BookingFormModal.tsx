@@ -231,7 +231,7 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice, addon
                   razorpay_signature: response.razorpay_signature,
                   booking: form,
                   packageName,
-                  addon: addonSelected ? { name: ADDON_NAME, price: ADDON_PRICE } : null,
+                  addons: chosenAddons.map((a) => ({ name: a.name, price: a.price })),
                   packageAmount: validPackagePrice,
                   amount: totalPrice,
                 }),
