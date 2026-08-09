@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import DisclaimerLine from "./DisclaimerLine";
-import BookingFormModal from "./BookingFormModal";
+import BookingFormModal, { type PackageAddon } from "./BookingFormModal";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -13,7 +13,7 @@ const fadeUp = {
   }),
 };
 
-const Feature = ({ text }: { icon?: string; text: string }) => (
+const Feature = ({ text }: { text: string }) => (
   <li className="flex items-start gap-2.5 text-sm text-brand-body">
     <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-sage/15 text-brand-sage">
       <Check className="h-3 w-3" strokeWidth={3} />
@@ -22,33 +22,99 @@ const Feature = ({ text }: { icon?: string; text: string }) => (
   </li>
 );
 
-interface SelectedPackage {
+const PROTECTION_ADDON: PackageAddon = {
+  id: "protection",
+  name: "Delivery Date Change Protection",
+  price: 1367,
+  description:
+    "If your delivery gets preponed (or rescheduled) by your doctor, we recalculate and give you a fresh set of auspicious dates & muhurat.",
+  recommended: true,
+};
+
+const NICKNAME_ADDON: PackageAddon = {
+  id: "nickname",
+  name: "Nickname Analysis",
+  price: 1367,
+  description: "A numerologically aligned pet name / nickname for your baby, analysed and corrected.",
+};
+
+const EXTRA_NAMES_ADDON: PackageAddon = {
+  id: "extra-names",
+  name: "10+ Extra Numerologically Aligned Names",
+  price: 1367,
+  description: "An additional set of 10+ curated name options to choose from.",
+};
+
+const DATE_FEATURES = [
+  "Top 3 Auspicious Dates — Priority Based Selection",
+  "Panchang, Tithi, Mool & Nakshatra Analysis",
+  "Numerologically Powerful Dates",
+  "Mulank, Bhagyank & Rajyog Analysis",
+  "Shubh Muhurat Timings for Baby Delivery",
+];
+
+const NAME_FEATURES = [
+  "10+ Numerologically Aligned Name Options",
+  "Already Have a Name? We'll Correct It Too",
+  "Child's Mulank & Bhagyank Analysis",
+  "First Name & Full Name Analysis",
+  "Compound Number Analysis",
+  "Personal Loshu Grid",
+  "First Alphabet Analysis",
+  "PDF Report (45+ Pages)",
+  "Call Consultation Included",
+];
+
+interface Tier {
+  id: string;
   name: string;
   price: number;
+  tagline: string;
+  badge?: string;
+  features: string[];
+  addons: PackageAddon[];
+  highlight?: boolean;
 }
 
-const readPackageName = (key: string, fallback: string) => {
-  const value = (import.meta.env[key] as string | undefined)?.trim();
-  return value && Number.isNaN(Number(value)) ? value : fallback;
-};
-
-const readPackagePrice = (key: string, fallback: number) => {
-  const rawValue = import.meta.env[key] as string | undefined;
-  const normalizedValue = rawValue?.replace(/[^0-9.]/g, "");
-  const price = Number(normalizedValue);
-  return Number.isFinite(price) && price > 0 ? price : fallback;
-};
+const TIERS: Tier[] = [
+  {
+    id: "starter",
+    name: "Starter Package",
+    price: 3437,
+    tagline: "Perfect for parents who want the right date, confidently chosen.",
+    features: DATE_FEATURES,
+    addons: [PROTECTION_ADDON],
+  },
+  {
+    id: "advanced",
+    name: "Advanced Package",
+    price: 6137,
+    tagline: "For parents who want the full picture — dates, name & beyond.",
+    badge: "✦ Most Popular",
+    highlight: true,
+    features: ["Everything in Starter, plus:", ...NAME_FEATURES],
+    addons: [NICKNAME_ADDON, PROTECTION_ADDON],
+  },
+  {
+    id: "complete",
+    name: "Complete Package",
+    price: 8567,
+    tagline: "The complete numerology blueprint for your baby's lifetime.",
+    badge: "✦ Complete Blueprint",
+    features: [
+      "Everything in Advanced, plus:",
+      "Nickname Analysis",
+      "Ideal Career Path Analysis",
+      "Lucky Direction (Feng Shui)",
+      "Lucky Colors Analysis",
+      "Lucky Numbers Analysis",
+    ],
+    addons: [EXTRA_NAMES_ADDON, PROTECTION_ADDON],
+  },
+];
 
 const Pricing = () => {
-  const [selected, setSelected] = useState<SelectedPackage | null>(null);
-
-  const ESSENTIALS_NAME = readPackageName("VITE_PACKAGE_ESSENTIALS_NAME", "Essentials Package");
-  const ESSENTIALS_PRICE = readPackagePrice("VITE_PACKAGE_ESSENTIALS_PRICE", 1097);
-
-  const COMPLETE_NAME = readPackageName("VITE_PACKAGE_COMPLETE_NAME", "Complete Package");
-  const COMPLETE_PRICE = readPackagePrice("VITE_PACKAGE_COMPLETE_PRICE", 3167);
-
-  const openForm = (name: string, price: number) => setSelected({ name, price });
+  const [selected, setSelected] = useState<Tier | null>(null);
 
   return (
     <section id="pricing" className="py-20 scroll-mt-20">
@@ -62,54 +128,67 @@ const Pricing = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6 items-stretch max-w-4xl mx-auto">
-          {/* Essentials */}
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" custom={0} viewport={{ once: true }}
-            className="rounded-card bg-brand-card border border-brand-border p-6 flex flex-col">
-            <div className="text-center mb-4">
-              <span className="font-accent text-[52px] font-bold text-brand-rose">&#8377;{ESSENTIALS_PRICE.toLocaleString("en-IN")}</span>
-              <h3 className="font-display text-xl font-semibold mt-1">{ESSENTIALS_NAME}</h3>
-              <p className="text-brand-body text-sm mt-1">Perfect for parents who want the right date, confidently chosen.</p>
-            </div>
-            <ul className="space-y-3 flex-1">
-              <Feature icon="🗓️" text="Top 3 Auspicious Dates — Priority Based Selection" />
-              <Feature icon="📿" text="Panchang, Tithi, Mool & Nakshatra Analysis" />
-              <Feature icon="🔢" text="Numerologically Powerful Dates" />
-              <Feature icon="🪐" text="Mulank, Bhagyank & Rajyog Analysis" />
-              <Feature icon="⏰" text="Shubh Muhurat Timings for Baby Delivery" />
-            </ul>
-            <button onClick={() => openForm(ESSENTIALS_NAME, ESSENTIALS_PRICE)} className="mt-6 block w-full text-center rounded-full border-2 border-brand-rose text-brand-rose font-body font-semibold py-2.5 transition-colors hover:bg-gradient-warm hover:text-white">
-              Get Started — ₹{ESSENTIALS_PRICE.toLocaleString("en-IN")}
-            </button>
-          </motion.div>
+        <div className="grid gap-6 md:grid-cols-3 items-stretch max-w-6xl mx-auto">
+          {TIERS.map((tier, i) => (
+            <motion.div
+              key={tier.id}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              custom={i}
+              viewport={{ once: true }}
+              className={
+                tier.highlight
+                  ? "rounded-card bg-brand-surface border-2 border-brand-rose p-8 flex flex-col relative shadow-[0_0_28px_rgba(196,120,138,0.25)] md:-mt-4 md:mb-[-1rem]"
+                  : "rounded-card bg-brand-card border border-brand-border p-6 flex flex-col relative"
+              }
+            >
+              {tier.badge && (
+                <span
+                  className={`absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full text-xs font-body font-semibold px-4 py-1 ${
+                    tier.highlight ? "bg-gradient-warm text-white" : "bg-brand-heading text-white"
+                  }`}
+                >
+                  {tier.badge}
+                </span>
+              )}
+              <div className="text-center mb-4">
+                <span className={`font-accent font-bold text-brand-rose ${tier.highlight ? "text-[54px]" : "text-[46px]"}`}>
+                  &#8377;{tier.price.toLocaleString("en-IN")}
+                </span>
+                <h3 className="font-display text-xl font-semibold mt-1">{tier.name}</h3>
+                <p className="text-brand-body text-sm mt-1">{tier.tagline}</p>
+              </div>
+              <ul className="space-y-3 flex-1">
+                {tier.features.map((f) => (
+                  <Feature key={f} text={f} />
+                ))}
+              </ul>
 
-          {/* Complete - elevated */}
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" custom={1} viewport={{ once: true }}
-            className="rounded-card bg-brand-surface border-2 border-brand-rose p-8 flex flex-col relative shadow-[0_0_28px_rgba(196,120,138,0.25)] md:-mt-4 md:mb-[-1rem]">
-            <span className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-gradient-warm text-white text-xs font-body font-semibold px-4 py-1">
-              ✦ Most Popular
-            </span>
-            <div className="text-center mb-4">
-              <span className="font-accent text-[60px] font-bold text-brand-rose">&#8377;{COMPLETE_PRICE.toLocaleString("en-IN")}</span>
-              <h3 className="font-display text-xl font-semibold mt-1">{COMPLETE_NAME}</h3>
-              <p className="text-brand-body text-sm mt-1">For parents who want the full picture — dates, name & beyond.</p>
-            </div>
-            <ul className="space-y-3 flex-1">
-              <Feature icon="✅" text="Everything in Essentials, plus:" />
-              <Feature icon="🔤" text="10+ Numerologically Aligned Name Options" />
-              <Feature icon="✍️" text="Already Have a Name? We'll Correct It Too" />
-              <Feature icon="🪐" text="Child's Mulank & Bhagyank Analysis" />
-              <Feature icon="🔍" text="First Name & Full Name Analysis" />
-              <Feature icon="🔢" text="Compound Number Analysis" />
-              <Feature icon="🧮" text="Personal Loshu Grid" />
-              <Feature icon="🔤" text="First Alphabet Analysis" />
-              <Feature icon="📄" text="PDF Report (45+ Pages)" />
-              <Feature icon="📞" text="Call Consultation Included" />
-            </ul>
-            <button onClick={() => openForm(COMPLETE_NAME, COMPLETE_PRICE)} className="mt-6 block w-full text-center rounded-full bg-gradient-warm text-white font-body font-semibold py-3 transition-transform hover:scale-105">
-              Get Started — ₹{COMPLETE_PRICE.toLocaleString("en-IN")}
-            </button>
-          </motion.div>
+              <div className="mt-5 rounded-lg border border-dashed border-brand-rose/50 bg-brand-rose/5 px-3 py-2.5">
+                <p className="font-display text-xs font-semibold text-brand-heading">Optional Add-ons</p>
+                <ul className="mt-1 space-y-1">
+                  {tier.addons.map((a) => (
+                    <li key={a.id} className="flex justify-between gap-2 text-xs text-brand-body">
+                      <span>{a.name}</span>
+                      <span className="font-accent whitespace-nowrap">+₹{a.price.toLocaleString("en-IN")}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <button
+                onClick={() => setSelected(tier)}
+                className={
+                  tier.highlight
+                    ? "mt-6 block w-full text-center rounded-full bg-gradient-warm text-white font-body font-semibold py-3 transition-transform hover:scale-105"
+                    : "mt-6 block w-full text-center rounded-full border-2 border-brand-rose text-brand-rose font-body font-semibold py-2.5 transition-colors hover:bg-gradient-warm hover:text-white"
+                }
+              >
+                Get Started — ₹{tier.price.toLocaleString("en-IN")}
+              </button>
+            </motion.div>
+          ))}
         </div>
 
         <div className="text-center mt-8 space-y-3">
@@ -126,6 +205,7 @@ const Pricing = () => {
           onOpenChange={(o) => !o && setSelected(null)}
           packageName={selected.name}
           packagePrice={selected.price}
+          addons={selected.addons}
         />
       )}
     </section>
