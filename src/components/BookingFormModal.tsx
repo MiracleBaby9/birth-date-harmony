@@ -55,7 +55,8 @@ const addDaysISO = (iso: string, days: number) => {
   return d.toISOString().split("T")[0];
 };
 
-const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice }: BookingFormModalProps) => {
+const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice, addons }: BookingFormModalProps) => {
+  const activeAddons = addons && addons.length ? addons : DEFAULT_ADDONS;
   
   const [form, setForm] = useState({
     motherName: "",
