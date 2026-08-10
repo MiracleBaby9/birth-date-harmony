@@ -17,13 +17,13 @@ const features: { label: string; s: Val; a: Val; c: Val }[] = [
   { label: "First Alphabet Analysis", s: false, a: true, c: true },
   { label: "PDF Report (45+ Pages)", s: false, a: true, c: true },
   { label: "Call Consultation Included", s: false, a: true, c: true },
-  { label: "Nickname Analysis", s: false, a: "Add-on ₹1,367", c: true },
+  { label: "Nickname Analysis", s: false, a: false, c: true },
   { label: "Ideal Career Path Analysis", s: false, a: false, c: true },
   { label: "Lucky Direction (Feng Shui)", s: false, a: false, c: true },
   { label: "Lucky Colors & Lucky Numbers Analysis", s: false, a: false, c: true },
   { label: "10+ Extra Aligned Names", s: false, a: false, c: true },
-  { label: "Delivery Date Change Protection", s: "Add-on ₹1,367", a: "Add-on ₹1,367", c: "Add-on ₹1,367" },
 ];
+
 
 const Cell = ({ v }: { v: Val }) => {
   if (typeof v === "string") return <span className="font-body text-xs text-brand-gold">{v}</span>;
