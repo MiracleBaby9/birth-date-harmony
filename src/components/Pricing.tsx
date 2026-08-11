@@ -120,6 +120,8 @@ const TIERS: Tier[] = [
       "Lucky Numbers Analysis",
     ],
     addons: [PROTECTION_ADDON, EXPRESS_DELIVERY_ADDON],
+  },
+];
 
 const Pricing = () => {
   const [selected, setSelected] = useState<Tier | null>(null);
