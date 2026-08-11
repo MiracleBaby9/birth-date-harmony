@@ -102,7 +102,7 @@ const TIERS: Tier[] = [
     badge: "✦ Most Popular",
     highlight: true,
     features: ["Everything in Starter, plus:", ...NAME_FEATURES],
-    addons: [NICKNAME_ADDON, PROTECTION_ADDON, EXPRESS_DELIVERY_ADDON],
+    addons: [NICKNAME_ADDON, PROTECTION_ADDON],
   },
   {
     id: "complete",
