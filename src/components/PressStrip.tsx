@@ -13,10 +13,10 @@ const Inc91 = () => (
 const DailyHunt = () => (
   <div className="flex items-center gap-2">
     <svg viewBox="0 0 32 32" className="h-7 w-7" aria-hidden="true">
-      <circle cx="11" cy="11" r="6" fill="hsl(var(--brand-rose))" opacity="0.85" />
-      <circle cx="21" cy="11" r="6" fill="hsl(var(--brand-gold))" opacity="0.85" />
-      <circle cx="11" cy="21" r="6" fill="hsl(var(--brand-sage))" opacity="0.85" />
-      <circle cx="21" cy="21" r="6" fill="hsl(var(--brand-heading))" opacity="0.6" />
+      <circle cx="11" cy="11" r="6" fill="hsl(var(--rose))" opacity="0.85" />
+      <circle cx="21" cy="11" r="6" fill="hsl(var(--gold))" opacity="0.85" />
+      <circle cx="11" cy="21" r="6" fill="hsl(var(--sage))" opacity="0.85" />
+      <circle cx="21" cy="21" r="6" fill="hsl(var(--heading))" opacity="0.6" />
     </svg>
     <span className="font-body text-base sm:text-lg font-semibold text-brand-heading">dailyhunt</span>
   </div>
