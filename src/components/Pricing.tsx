@@ -119,7 +119,7 @@ const TIERS: Tier[] = [
       "Lucky Colors Analysis",
       "Lucky Numbers Analysis",
     ],
-    addons: [PROTECTION_ADDON],
+    addons: [PROTECTION_ADDON, EXPRESS_DELIVERY_ADDON, EXTRA_NAMES_ADDON],
   },
 ];
 
