@@ -50,7 +50,7 @@ const EXPRESS_DELIVERY_ADDON: PackageAddon = {
   name: "24-Hour Express Delivery",
   price: 1367,
   description:
-    "Get your C-Section date & name report delivered within 24 hours instead of the standard turnaround time.",
+    "Get your C-Section date report delivered within 24 hours instead of the standard turnaround time. Applies to the date report only.",
   recommended: true,
 };
 
