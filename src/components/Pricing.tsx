@@ -45,6 +45,15 @@ const EXTRA_NAMES_ADDON: PackageAddon = {
   description: "An additional set of 10+ curated name options to choose from.",
 };
 
+const EXPRESS_DELIVERY_ADDON: PackageAddon = {
+  id: "express-delivery",
+  name: "24-Hour Express Delivery",
+  price: 1367,
+  description:
+    "Get your C-Section date & name report delivered within 24 hours instead of the standard turnaround time.",
+  recommended: true,
+};
+
 const DATE_FEATURES = [
   "Top 3 Auspicious Dates — Priority Based Selection",
   "Panchang, Tithi, Mool & Nakshatra Analysis",
@@ -83,7 +92,7 @@ const TIERS: Tier[] = [
     price: 3437,
     tagline: "Perfect for parents who want the right date, confidently chosen.",
     features: DATE_FEATURES,
-    addons: [PROTECTION_ADDON],
+    addons: [PROTECTION_ADDON, EXPRESS_DELIVERY_ADDON],
   },
   {
     id: "advanced",
@@ -93,7 +102,7 @@ const TIERS: Tier[] = [
     badge: "✦ Most Popular",
     highlight: true,
     features: ["Everything in Starter, plus:", ...NAME_FEATURES],
-    addons: [NICKNAME_ADDON, PROTECTION_ADDON],
+    addons: [NICKNAME_ADDON, PROTECTION_ADDON, EXPRESS_DELIVERY_ADDON],
   },
   {
     id: "complete",
@@ -110,7 +119,7 @@ const TIERS: Tier[] = [
       "Lucky Colors Analysis",
       "Lucky Numbers Analysis",
     ],
-    addons: [PROTECTION_ADDON],
+    addons: [PROTECTION_ADDON, EXPRESS_DELIVERY_ADDON],
   },
 ];
 
