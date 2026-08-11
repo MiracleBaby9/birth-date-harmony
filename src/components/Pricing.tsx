@@ -92,7 +92,7 @@ const TIERS: Tier[] = [
     price: 3437,
     tagline: "Perfect for parents who want the right date, confidently chosen.",
     features: DATE_FEATURES,
-    addons: [PROTECTION_ADDON, EXPRESS_DELIVERY_ADDON],
+    addons: [PROTECTION_ADDON, EXPRESS_DELIVERY_ADDON, NICKNAME_ADDON, EXTRA_NAMES_ADDON],
   },
   {
     id: "advanced",
