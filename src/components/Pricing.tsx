@@ -45,6 +45,15 @@ const EXTRA_NAMES_ADDON: PackageAddon = {
   description: "An additional set of 10+ curated name options to choose from.",
 };
 
+const EXPRESS_DELIVERY_ADDON: PackageAddon = {
+  id: "express-delivery",
+  name: "24-Hour Express Delivery",
+  price: 1367,
+  description:
+    "Get your C-Section date & name report delivered within 24 hours instead of the standard turnaround time.",
+  recommended: true,
+};
+
 const DATE_FEATURES = [
   "Top 3 Auspicious Dates — Priority Based Selection",
   "Panchang, Tithi, Mool & Nakshatra Analysis",
