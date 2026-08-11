@@ -50,7 +50,7 @@ const EXPRESS_DELIVERY_ADDON: PackageAddon = {
   name: "24-Hour Express Delivery",
   price: 1367,
   description:
-    "Get your C-Section date & name report delivered within 24 hours instead of the standard turnaround time.",
+    "Get your C-Section date report delivered within 24 hours instead of the standard turnaround time. Applies to the date report only.",
   recommended: true,
 };
 
@@ -102,7 +102,7 @@ const TIERS: Tier[] = [
     badge: "✦ Most Popular",
     highlight: true,
     features: ["Everything in Starter, plus:", ...NAME_FEATURES],
-    addons: [NICKNAME_ADDON, PROTECTION_ADDON, EXPRESS_DELIVERY_ADDON],
+    addons: [NICKNAME_ADDON, PROTECTION_ADDON],
   },
   {
     id: "complete",
@@ -119,7 +119,7 @@ const TIERS: Tier[] = [
       "Lucky Colors Analysis",
       "Lucky Numbers Analysis",
     ],
-    addons: [PROTECTION_ADDON, EXPRESS_DELIVERY_ADDON],
+    addons: [PROTECTION_ADDON],
   },
 ];
 
