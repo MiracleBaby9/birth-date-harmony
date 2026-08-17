@@ -4,23 +4,24 @@
 
 @layer base {
   :root {
-    /* "A baby is on the way" — warm milk, peach, coral, soft mint */
-    --bg: 350 100% 99%;
-    --surface: 346 42% 97.5%;
+    /* Lavender — soft violet, lilac surfaces, calm iris accents */
+    --bg: 270 60% 99%;
+    --surface: 268 44% 97%;
     --card: 0 0% 100%;
-    --rose: 348 52% 85%;
-    --rose-dark: 348 40% 70%;
-    --sage: 158 30% 66%;
-    --gold: 32 48% 52%;
-    --heading: 340 16% 24%;
-    --body: 340 10% 42%;
-    --muted: 340 8% 60%;
-    --border: 346 30% 94%;
+    --rose: 265 45% 62%;
+    --rose-dark: 268 42% 48%;
+    --sage: 200 32% 62%;
+    --gold: 43 45% 52%;
+    --heading: 265 26% 24%;
+    --body: 265 12% 42%;
+    --muted: 265 10% 60%;
+    --border: 268 32% 93%;
 
-    --gradient-warm: linear-gradient(135deg, hsl(350 62% 68%) 0%, hsl(349 66% 60%) 55%, hsl(345 58% 52%) 130%);
+    --gradient-warm: linear-gradient(135deg, hsl(268 58% 68%) 0%, hsl(264 52% 58%) 55%, hsl(258 48% 48%) 130%);
     --gradient-soft: linear-gradient(180deg, hsl(var(--bg)) 0%, hsl(var(--surface)) 100%);
     --shadow-soft: 0 18px 45px -22px hsl(var(--rose) / 0.35);
-    --shadow-lift: 0 26px 60px -28px hsl(20 40% 25% / 0.28);
+    --shadow-lift: 0 26px 60px -28px hsl(265 40% 25% / 0.28);
+
 
     --background: var(--bg);
     --foreground: var(--heading);
