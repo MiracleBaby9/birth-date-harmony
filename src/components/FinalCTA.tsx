@@ -27,7 +27,7 @@ const FinalCTA = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 0.2 }}
-        className="keep-color inline-block rounded-full bg-white text-brand-rose px-8 py-3.5 text-base font-body font-semibold shadow-lg transition-transform hover:scale-105"
+        className="keep-color inline-block rounded-full bg-white text-brand-heading px-8 py-3.5 text-base font-body font-semibold shadow-lg transition-transform hover:scale-105"
       >
         Get My C-Section Baby Dates Now
       </motion.a>
