@@ -25,6 +25,8 @@ const About = () => (
             <img
               src={himansshuPhoto}
               alt="Himansshu Agarwal Ji — Name Correction Expert"
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover object-top"
             />
           </div>

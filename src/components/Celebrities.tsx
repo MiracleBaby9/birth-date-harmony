@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import geita from "@/assets/celeb-geita-tyagi.png";
+import geita from "@/assets/celeb-geita-tyagi.jpg";
 import darshan from "@/assets/celeb-darshan-patil.jpg";
 
 const fadeUp = {
