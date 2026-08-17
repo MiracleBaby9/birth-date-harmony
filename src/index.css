@@ -71,7 +71,7 @@
     background-image: var(--gradient-warm);
   }
   .bg-gradient-warm,
-  .bg-gradient-warm * {
+  .bg-gradient-warm *:not(.keep-color) {
     color: hsl(0 0% 100%) !important;
   }
   .shadow-soft {
