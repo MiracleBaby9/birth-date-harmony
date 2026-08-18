@@ -27,6 +27,19 @@ const celebrities = [
     note: "Took personal consultation from Ankshaastra for herself.",
   },
   {
+    name: "Prashant S Sambaragi",
+    role: "South Actor & Entrepreneur",
+    image: prashantAsset.url,
+    bio: "Prashant S Sambaragi is a popular South Indian actor and entrepreneur, widely recognised as a contestant on Bigg Boss Kannada Season 8.",
+    works: [
+      { title: "Bigg Boss Kannada S8", role: "Contestant" },
+      { title: "South Indian Cinema", role: "Actor" },
+      { title: "Entrepreneurship", role: "Founder" },
+    ],
+    note: "Chose Ankshaastra for personal numerology guidance.",
+  },
+  {
+
     name: "Darshan Patil",
     role: "Film Actor & Body Double",
     image: darshan,
