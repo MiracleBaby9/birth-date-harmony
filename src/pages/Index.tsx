@@ -17,14 +17,13 @@ const Index = () => (
     <PressStrip />
     {/* Philosophy */}
     <MoreThanDate />
+    <Pricing />
+    <Testimonials />
     {/* Insightful podcasts */}
     <YouTubeSection />
     {/* The challenge */}
     <WhoShouldConsider />
-    <Pricing />
-    <Testimonials />
     <FinalCTA />
   </SiteLayout>
 );
 
-export default Index;
