@@ -75,7 +75,7 @@ const Hero = () => (
         custom={2}
         className="text-brand-body text-base sm:text-lg max-w-2xl mx-auto leading-relaxed"
       >
-        When a C-section is planned, the birth date becomes more than a medical decision. Numerology helps identify dates that align with harmony, stability, and a strong foundation — supporting your child's natural rhythm from the very beginning.
+        Astrology &amp; Numerology helps identify dates that align with harmony, stability, and a strong foundation — supporting your child's natural rhythm from the very beginning.
       </motion.p>
 
       <motion.a
@@ -89,25 +89,51 @@ const Hero = () => (
         Get My C-Section Baby Dates Now
       </motion.a>
 
-      {/* Trust badges - aesthetic cards */}
+      {/* Assurance pill */}
       <motion.div
         variants={fadeUpVariants}
         initial="hidden"
         animate="visible"
         custom={4}
-        className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 max-w-xl mx-auto"
+        className="flex justify-center"
       >
-        {trustItems.map((t, i) => (
-          <div
-            key={i}
-            className="flex flex-col items-center gap-1.5 glass-card rounded-2xl px-3 py-4 shadow-soft transition-transform hover:-translate-y-0.5"
-          >
-            <t.Icon className={`h-6 w-6 ${t.color}`} strokeWidth={1.75} />
-            <span className="font-body font-bold text-brand-heading text-sm leading-tight">{t.bold}</span>
-            <span className="text-[10px] text-brand-muted leading-tight">{t.sub}</span>
+        <span className="inline-flex items-center gap-2 rounded-full border border-brand-gold/50 bg-white/70 backdrop-blur-md px-6 py-2.5 text-xs sm:text-sm font-body font-semibold uppercase tracking-[0.16em] text-brand-gold shadow-soft">
+          <span aria-hidden>★</span> Top 3 Auspicious Dates <span aria-hidden>★</span>
+        </span>
+      </motion.div>
+
+      {/* Feature line */}
+      <motion.div
+        variants={fadeUpVariants}
+        initial="hidden"
+        animate="visible"
+        custom={5}
+        className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs sm:text-sm text-brand-muted"
+      >
+        {featureLine.map((f) => (
+          <span key={f} className="inline-flex items-center gap-1.5">
+            <span className="text-brand-gold" aria-hidden>✦</span>
+            {f}
+          </span>
+        ))}
+      </motion.div>
+
+      {/* Stats */}
+      <motion.div
+        variants={fadeUpVariants}
+        initial="hidden"
+        animate="visible"
+        custom={6}
+        className="mx-auto max-w-2xl border-y border-brand-gold/40 py-6 grid grid-cols-3 divide-x divide-brand-gold/30"
+      >
+        {stats.map((s) => (
+          <div key={s.label} className="px-2">
+            <div className="font-display text-2xl sm:text-4xl font-bold text-brand-gold">{s.value}</div>
+            <div className="text-[10px] sm:text-xs uppercase tracking-[0.18em] text-brand-muted mt-1">{s.label}</div>
           </div>
         ))}
       </motion.div>
+
 
       <motion.div 
         variants={fadeUpVariants}
