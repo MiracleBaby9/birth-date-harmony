@@ -61,6 +61,11 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/reviews" element={<Reviews />} />
+          <Route path="/videos" element={<Videos />} />
+          <Route path="/media" element={<Media />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/faq" element={<FaqPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/refund-policy" element={<RefundPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
