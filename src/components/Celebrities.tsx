@@ -29,7 +29,7 @@ const celebrities = [
   {
     name: "Prashant S Sambaragi",
     role: "South Actor & Entrepreneur",
-    image: prashantAsset.url,
+    image: prashant,
     bio: "Prashant S Sambaragi is a popular South Indian actor and entrepreneur, widely recognised as a contestant on Bigg Boss Kannada Season 8.",
     works: [
       { title: "Bigg Boss Kannada S8", role: "Contestant" },
