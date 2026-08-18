@@ -1,7 +1,6 @@
 import SiteLayout from "@/components/SiteLayout";
 import PressStrip from "@/components/PressStrip";
 import Celebrities from "@/components/Celebrities";
-import TrustCompact from "@/components/TrustCompact";
 import FinalCTA from "@/components/FinalCTA";
 
 const Media = () => (
@@ -12,13 +11,8 @@ const Media = () => (
         Featured in leading publications and trusted by names from film and business.
       </p>
     </div>
-    <div className="md:hidden">
-      <TrustCompact />
-    </div>
     <PressStrip />
-    <div className="hidden md:block">
-      <Celebrities />
-    </div>
+    <Celebrities />
     <FinalCTA />
   </SiteLayout>
 );
