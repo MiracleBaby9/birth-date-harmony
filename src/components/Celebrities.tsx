@@ -67,7 +67,7 @@ const Celebrities = () => (
         <span className="inline-block rounded-full border border-brand-gold/40 bg-brand-card px-4 py-1 text-xs font-body font-medium text-brand-gold uppercase tracking-wider">
           Trusted by Celebrities
         </span>
-        <h2 className="font-display text-2xl sm:text-3xl font-bold pt-2">
+        <h2 className="heading-lg font-bold pt-2">
           Consulted by Leading Names
         </h2>
         <p className="font-accent italic text-brand-gold text-lg">

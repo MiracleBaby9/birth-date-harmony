@@ -8,7 +8,7 @@ const FinalCTA = () => (
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="font-display text-2xl sm:text-3xl font-bold text-white"
+        className="heading-lg font-bold text-white"
       >
         Ready to Give Your Child a Thoughtful Beginning?
       </motion.h2>
@@ -22,7 +22,7 @@ const FinalCTA = () => (
         Choose a beginning that supports balance and strength.
       </motion.p>
       <motion.a
-        href="#pricing"
+        href="/#pricing"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}

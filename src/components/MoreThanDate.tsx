@@ -34,7 +34,7 @@ const MoreThanDate = () => (
           variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
           className="space-y-5"
         >
-          <h2 className="font-display text-2xl sm:text-3xl font-bold">
+          <h2 className="heading-lg font-bold">
             More Than Just a Scheduled Date
           </h2>
           <p className="font-accent italic text-brand-gold text-lg">
@@ -52,7 +52,7 @@ const MoreThanDate = () => (
               With multiple possible dates suggested medically, selecting one can feel overwhelming. Numerology-based guidance helps narrow down suitable options, offering clarity and confidence in your decision.
             </p>
             <a
-              href="#pricing"
+              href="/#pricing"
               className="inline-block rounded-full bg-brand-rose px-6 py-2.5 text-sm font-body font-semibold text-white transition-transform hover:scale-105"
             >
               Get My C-Section Baby Dates Now

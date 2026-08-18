@@ -38,7 +38,7 @@ const WhoShouldConsider = () => (
           <p className="font-body text-xs sm:text-sm uppercase tracking-[0.25em] text-brand-gold">
             The Challenge
           </p>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
+          <h2 className="heading-lg font-bold text-white leading-tight">
             Struggling to Choose the{" "}
             <span className="text-brand-gold">Right C-Section Date?</span>
           </h2>

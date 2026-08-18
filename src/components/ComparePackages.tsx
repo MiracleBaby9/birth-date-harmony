@@ -44,7 +44,7 @@ const ComparePackages = () => (
         transition={{ duration: 0.5 }}
         className="text-center mb-8 space-y-2"
       >
-        <h2 className="font-display text-2xl sm:text-3xl font-bold">Compare Packages</h2>
+        <h2 className="heading-lg font-bold">Compare Packages</h2>
         <p className="font-accent italic text-brand-gold">Find the right fit for your family at a glance</p>
       </motion.div>
 

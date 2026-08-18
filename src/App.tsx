@@ -39,6 +39,11 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
+import Reviews from "./pages/Reviews.tsx";
+import Videos from "./pages/Videos.tsx";
+import Media from "./pages/Media.tsx";
+import AboutPage from "./pages/AboutPage.tsx";
+import FaqPage from "./pages/FaqPage.tsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 import RefundPolicy from "./pages/RefundPolicy.tsx";
 import TermsOfService from "./pages/TermsOfService.tsx";
@@ -56,6 +61,11 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/reviews" element={<Reviews />} />
+          <Route path="/videos" element={<Videos />} />
+          <Route path="/media" element={<Media />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/faq" element={<FaqPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/refund-policy" element={<RefundPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
