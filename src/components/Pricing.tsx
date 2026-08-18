@@ -131,7 +131,7 @@ const Pricing = () => {
     <section id="pricing" className="py-20 scroll-mt-20">
       <div className="container">
         <motion.div variants={fadeUp} initial="hidden" whileInView="visible" custom={0} viewport={{ once: true }} className="text-center mb-12 space-y-2">
-          <h2 className="font-display text-2xl sm:text-3xl font-bold">
+          <h2 className="heading-lg font-bold">
             C-Section Baby Dates — Choose Your Package
           </h2>
           <p className="font-accent italic text-brand-gold text-lg">

@@ -34,7 +34,7 @@ const MoreThanDate = () => (
           variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
           className="space-y-5"
         >
-          <h2 className="font-display text-2xl sm:text-3xl font-bold">
+          <h2 className="heading-lg font-bold">
             More Than Just a Scheduled Date
           </h2>
           <p className="font-accent italic text-brand-gold text-lg">

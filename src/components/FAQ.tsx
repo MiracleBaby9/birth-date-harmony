@@ -65,7 +65,7 @@ const FAQ = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-display text-2xl sm:text-3xl font-bold text-center mb-12"
+          className="heading-lg font-bold text-center mb-12"
         >
           Frequently Asked Questions (FAQs)
         </motion.h2>

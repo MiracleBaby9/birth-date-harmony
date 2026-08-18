@@ -58,7 +58,7 @@ const Hero = () => (
         initial="hidden"
         animate="visible"
         custom={1}
-        className="font-display text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-brand-heading"
+        className="heading-xl font-bold leading-tight text-brand-heading"
       >
         Let Me Choose the Most Powerful Birth Date for Your Child
       </motion.h1>

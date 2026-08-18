@@ -8,7 +8,7 @@ const RefundPolicy = () => (
         <ArrowLeft className="w-4 h-4" /> Back to Home
       </Link>
 
-      <h1 className="text-3xl md:text-4xl font-display text-brand-heading mb-2">Refund & Cancellation Policy</h1>
+      <h1 className="heading-lg text-brand-heading mb-2">Refund & Cancellation Policy</h1>
       <p className="text-brand-muted text-sm mb-8 font-body">Effective Date: January 2025</p>
 
       <div className="prose prose-sm max-w-none font-body text-brand-body space-y-6">

@@ -63,7 +63,7 @@ const YouTubeSection = () => (
         viewport={{ once: true }}
         className="text-center mb-12 space-y-2"
       >
-        <h2 className="font-display text-2xl sm:text-3xl font-bold">
+        <h2 className="heading-lg font-bold">
           Watch & Learn More
         </h2>
         <p className="font-accent italic text-brand-gold text-lg">

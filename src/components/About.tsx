@@ -16,7 +16,7 @@ const About = () => (
         {/* Left rose accent strip */}
         <div className="absolute left-0 top-0 bottom-0 w-1 bg-brand-rose/40" />
 
-        <h2 className="font-display text-2xl font-bold text-center mb-6">
+        <h2 className="heading-md font-bold text-center mb-6">
           About Himansshu Agarwal Ji
         </h2>
 
