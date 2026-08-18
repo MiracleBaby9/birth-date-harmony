@@ -1,6 +1,6 @@
 import { motion, type Variants } from "framer-motion";
 import DisclaimerLine from "./DisclaimerLine";
-import heroBg from "@/assets/hero-bg.jpg";
+import heroBg from "@/assets/hero-bg.webp";
 
 const fadeUpVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
