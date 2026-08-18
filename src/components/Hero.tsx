@@ -46,7 +46,7 @@ const Hero = () => (
 
 
     {/* Radial glow */}
-    <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-brand-rose/15 blur-[130px] pointer-events-none z-[1]" />
+    <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] sm:w-[600px] sm:h-[600px] rounded-full bg-brand-rose/15 blur-[80px] sm:blur-[130px] pointer-events-none z-[1]" />
 
     <div className="container relative z-10 text-center max-w-3xl space-y-6">
       <motion.span

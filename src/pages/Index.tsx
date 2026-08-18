@@ -1,6 +1,7 @@
 import SiteLayout from "@/components/SiteLayout";
 import Hero from "@/components/Hero";
 import TrustCompact from "@/components/TrustCompact";
+import Pricing from "@/components/Pricing";
 import LazySection from "@/components/LazySection";
 
 const Index = () => (
@@ -11,7 +12,7 @@ const Index = () => (
     <LazySection loader={() => import("@/components/PressStrip")} minHeight={200} />
     {/* Philosophy */}
     <LazySection loader={() => import("@/components/MoreThanDate")} minHeight={480} />
-    <LazySection loader={() => import("@/components/Pricing")} minHeight={600} />
+    <Pricing />
     <LazySection loader={() => import("@/components/Testimonials")} minHeight={420} />
     {/* Insightful podcasts */}
     <LazySection loader={() => import("@/components/YouTubeSection")} minHeight={420} />
