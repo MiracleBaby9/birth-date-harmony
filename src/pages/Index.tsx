@@ -1,32 +1,25 @@
 import SiteLayout from "@/components/SiteLayout";
 import Hero from "@/components/Hero";
 import TrustCompact from "@/components/TrustCompact";
-import PressStrip from "@/components/PressStrip";
-import MoreThanDate from "@/components/MoreThanDate";
-import YouTubeSection from "@/components/YouTubeSection";
-import WhoShouldConsider from "@/components/WhoShouldConsider";
 import Pricing from "@/components/Pricing";
-import Testimonials from "@/components/Testimonials";
-import FinalCTA from "@/components/FinalCTA";
+import LazySection from "@/components/LazySection";
 
 const Index = () => (
   <SiteLayout>
     <Hero />
     {/* Page 2 — celebrity endorsements & press */}
     <TrustCompact />
-    <PressStrip />
+    <LazySection loader={() => import("@/components/PressStrip")} minHeight={200} />
     {/* Philosophy */}
-    <MoreThanDate />
+    <LazySection loader={() => import("@/components/MoreThanDate")} minHeight={480} />
     <Pricing />
-    <Testimonials />
+    <LazySection loader={() => import("@/components/Testimonials")} minHeight={420} />
     {/* Insightful podcasts */}
-    <YouTubeSection />
+    <LazySection loader={() => import("@/components/YouTubeSection")} minHeight={420} />
     {/* The challenge */}
-    <WhoShouldConsider />
-    <FinalCTA />
+    <LazySection loader={() => import("@/components/WhoShouldConsider")} minHeight={480} />
+    <LazySection loader={() => import("@/components/FinalCTA")} minHeight={320} />
   </SiteLayout>
 );
 
 export default Index;
-
-

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import himansshuPhoto from "@/assets/himansshu-agarwal.jpg";
+import himansshuPhoto from "@/assets/himansshu-agarwal.webp";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
