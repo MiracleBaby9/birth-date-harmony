@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import DisclaimerLine from "./DisclaimerLine";
-import scheduledDateImg from "@/assets/scheduled-date.jpg";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -10,30 +9,12 @@ const fadeUp = {
 const MoreThanDate = () => (
   <section className="py-20 bg-brand-surface">
     <div className="container">
-      <div className="grid md:grid-cols-2 gap-12 items-center">
-        {/* Left - decorative element */}
-        <motion.div
-          variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-          className="relative flex items-center justify-center"
-        >
-          <div className="relative w-full max-w-md aspect-square rounded-card overflow-hidden shadow-lift border border-brand-rose/20">
-            <img
-              src={scheduledDateImg}
-              alt="Mother gently holding newborn baby's hand surrounded by marigold petals"
-              loading="lazy"
-              width={1024}
-              height={1024}
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-tr from-brand-rose/10 via-transparent to-brand-gold/10 pointer-events-none" />
-          </div>
-        </motion.div>
-
-        {/* Right - text content */}
+      <div className="max-w-3xl mx-auto">
         <motion.div
           variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
           className="space-y-5"
         >
+
           <h2 className="heading-lg font-bold">
             More Than Just a Scheduled Date
           </h2>
