@@ -84,10 +84,11 @@ const Hero = () => (
         initial="hidden"
         animate="visible"
         custom={3}
-        className="inline-block rounded-full bg-gradient-warm px-9 py-4 text-base font-body font-bold text-white shadow-soft transition-transform hover:scale-[1.04]"
+        className="inline-block whitespace-nowrap rounded-full bg-gradient-warm px-6 sm:px-9 py-3.5 sm:py-4 text-[0.82rem] sm:text-base font-body font-bold text-white shadow-soft transition-transform hover:scale-[1.04]"
       >
         Get My C-Section Baby Dates Now
       </motion.a>
+
 
       {/* Assurance pill */}
       <motion.div

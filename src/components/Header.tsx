@@ -78,12 +78,15 @@ const Header = () => {
       </div>
 
       <nav className="lg:hidden container flex items-center gap-4 overflow-x-auto pb-1.5 text-xs font-body font-medium text-brand-body [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        {navItems.map((item) => (
-          <Link key={item.to} to={item.to} className="whitespace-nowrap transition-colors hover:text-brand-rose">
-            {item.label}
-          </Link>
-        ))}
+        {navItems
+          .filter((item) => !["Home", "Packages", "Reviews"].includes(item.label))
+          .map((item) => (
+            <Link key={item.to} to={item.to} className="whitespace-nowrap transition-colors hover:text-brand-rose">
+              {item.label}
+            </Link>
+          ))}
       </nav>
+
     </header>
   );
 };
