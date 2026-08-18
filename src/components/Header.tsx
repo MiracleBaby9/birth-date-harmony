@@ -40,12 +40,22 @@ const Header = () => {
       style={isScrolled ? { background: 'hsl(30 100% 98.5% / 0.9)', borderBottom: '1px solid hsl(22 62% 91%)' } : {}}
     >
       <div className="container flex items-center justify-between gap-3 py-2.5 sm:py-3">
-        <span
+        <Link
+          to="/"
           className="inline-flex items-center rounded-2xl px-3.5 py-2 shadow-soft"
           style={{ background: "hsl(340 30% 22%)" }}
         >
           <img src={logo} alt="Ankshaastra" className="h-7 w-auto max-w-[46vw] object-contain sm:h-9 sm:max-w-none" />
-        </span>
+        </Link>
+
+        <nav className="hidden lg:flex items-center gap-5 text-sm font-body font-medium text-brand-body">
+          {navItems.map((item) => (
+            <Link key={item.to} to={item.to} className="transition-colors hover:text-brand-rose">
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+
         <a
           href="https://miraclebaby.ankshaastra.com/"
           target="_blank"
@@ -55,6 +65,14 @@ const Header = () => {
           Perfect Baby Name
         </a>
       </div>
+
+      <nav className="lg:hidden container flex items-center gap-4 overflow-x-auto pb-1.5 text-xs font-body font-medium text-brand-body [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        {navItems.map((item) => (
+          <Link key={item.to} to={item.to} className="whitespace-nowrap transition-colors hover:text-brand-rose">
+            {item.label}
+          </Link>
+        ))}
+      </nav>
     </header>
   );
 };
