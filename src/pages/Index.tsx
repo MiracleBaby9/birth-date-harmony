@@ -1,20 +1,28 @@
 import SiteLayout from "@/components/SiteLayout";
 import Hero from "@/components/Hero";
-import WhoShouldConsider from "@/components/WhoShouldConsider";
-import MoreThanDate from "@/components/MoreThanDate";
+import TrustCompact from "@/components/TrustCompact";
 import PressStrip from "@/components/PressStrip";
-import ComparePackages from "@/components/ComparePackages";
+import MoreThanDate from "@/components/MoreThanDate";
+import YouTubeSection from "@/components/YouTubeSection";
+import WhoShouldConsider from "@/components/WhoShouldConsider";
 import Pricing from "@/components/Pricing";
+import Testimonials from "@/components/Testimonials";
 import FinalCTA from "@/components/FinalCTA";
 
 const Index = () => (
   <SiteLayout>
     <Hero />
-    <WhoShouldConsider />
-    <MoreThanDate />
+    {/* Page 2 — celebrity endorsements & press */}
+    <TrustCompact />
     <PressStrip />
-    <ComparePackages />
+    {/* Philosophy */}
+    <MoreThanDate />
+    {/* Insightful podcasts */}
+    <YouTubeSection />
+    {/* The challenge */}
+    <WhoShouldConsider />
     <Pricing />
+    <Testimonials />
     <FinalCTA />
   </SiteLayout>
 );

@@ -37,12 +37,13 @@ const Hero = () => (
         alt="Mystical birth date selection background"
         width={1920}
         height={1080}
-        className="w-full h-full object-cover"
+        className="w-full h-full object-cover object-[62%_18%] sm:object-center"
         fetchPriority="high"
         decoding="async"
       />
       <div className="absolute inset-0 bg-brand-bg/80" />
     </div>
+
 
     {/* Radial glow */}
     <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-brand-rose/15 blur-[130px] pointer-events-none z-[1]" />
