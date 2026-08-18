@@ -13,9 +13,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["Fraunces", "serif"],
-        body: ["Plus Jakarta Sans", "sans-serif"],
-        accent: ["Fraunces", "serif"],
+        display: ["Playfair Display", "serif"],
+        body: ["Inter", "sans-serif"],
+        accent: ["Playfair Display", "serif"],
+        form: ["Lato", "sans-serif"],
       },
       colors: {
         brand: {

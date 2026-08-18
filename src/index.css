@@ -70,6 +70,47 @@
   }
 }
 
+@layer components {
+  /* Heading scale */
+  .heading-xl {
+    @apply font-display text-3xl sm:text-5xl lg:text-6xl;
+  }
+  .heading-lg {
+    @apply font-display text-2xl sm:text-4xl lg:text-5xl;
+  }
+  .heading-md {
+    @apply font-display text-xl sm:text-3xl;
+  }
+  .heading-sm {
+    @apply font-display text-lg sm:text-2xl;
+  }
+
+  /* Body scale */
+  .body-lg {
+    @apply text-lg lg:text-xl;
+  }
+  .body-md {
+    @apply text-base lg:text-lg;
+  }
+}
+
+/* Order form typography */
+#order-form,
+#order-form input,
+#order-form textarea,
+#order-form select,
+#order-form button {
+  font-family: "Lato", sans-serif;
+}
+#order-form label {
+  font-size: 14px;
+}
+#order-form input,
+#order-form textarea,
+#order-form select {
+  font-size: 16px;
+}
+
 @layer utilities {
   .bg-gradient-warm {
     background-image: var(--gradient-warm);

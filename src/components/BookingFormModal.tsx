@@ -300,7 +300,7 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice, addon
           <p className="text-xs text-brand-muted text-center mt-1">Fill in your details to proceed to payment</p>
         </DialogHeader>
 
-        <form onSubmit={handleSubmit} className="px-5 pb-5 pt-3 space-y-4">
+        <form id="order-form" onSubmit={handleSubmit} className="font-form px-5 pb-5 pt-3 space-y-4">
           {/* Parents */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="space-y-1">
