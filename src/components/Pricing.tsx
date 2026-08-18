@@ -125,6 +125,7 @@ const TIERS: Tier[] = [
 
 const Pricing = () => {
   const [selected, setSelected] = useState<Tier | null>(null);
+  const [activeIdx, setActiveIdx] = useState(1);
 
   return (
     <section id="pricing" className="py-20 scroll-mt-20">
@@ -138,6 +139,31 @@ const Pricing = () => {
           </p>
         </motion.div>
 
+        {/* Mobile plan switcher */}
+        <div className="md:hidden mb-8">
+          <div className="grid grid-cols-3 gap-2">
+            {TIERS.map((tier, i) => (
+              <button
+                key={tier.id}
+                onClick={() => setActiveIdx(i)}
+                className={`rounded-2xl px-2 py-3 text-center transition-colors ${
+                  activeIdx === i
+                    ? "bg-gradient-warm text-white shadow-soft"
+                    : "bg-brand-card border border-brand-border text-brand-heading"
+                }`}
+              >
+                <span className="block font-body text-[10px] uppercase tracking-widest opacity-80">
+                  {tier.name.replace(" Package", "")}
+                </span>
+                <span className="block font-display text-sm font-semibold mt-0.5">
+                  ₹{tier.price.toLocaleString("en-IN")}
+                </span>
+              </button>
+            ))}
+          </div>
+          <p className="text-center text-brand-muted text-xs mt-2">Tap a box to switch plans</p>
+        </div>
+
         <div className="grid gap-6 md:grid-cols-3 items-stretch max-w-6xl mx-auto">
           {TIERS.map((tier, i) => (
             <motion.div
@@ -147,12 +173,13 @@ const Pricing = () => {
               whileInView="visible"
               custom={i}
               viewport={{ once: true }}
-              className={
+              className={`${activeIdx === i ? "flex" : "hidden md:flex"} ${
                 tier.highlight
-                  ? "rounded-card bg-brand-surface border-2 border-brand-rose p-8 flex flex-col relative shadow-[0_0_28px_rgba(196,120,138,0.25)] md:-mt-4 md:mb-[-1rem]"
-                  : "rounded-card bg-brand-card border border-brand-border p-6 flex flex-col relative"
-              }
+                  ? "rounded-card bg-brand-surface border-2 border-brand-rose p-8 flex-col relative shadow-[0_0_28px_hsl(var(--rose)/0.3)] md:-mt-4 md:mb-[-1rem]"
+                  : "rounded-card bg-brand-card border border-brand-border p-6 flex-col relative"
+              }`}
             >
+
               {tier.badge && (
                 <span
                   className={`absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full text-xs font-body font-semibold px-4 py-1 ${
