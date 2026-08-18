@@ -1,5 +1,16 @@
 import { useEffect, useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
+
+const navItems = [
+  { to: "/", label: "Home" },
+  { to: "/#pricing", label: "Packages" },
+  { to: "/reviews", label: "Reviews" },
+  { to: "/videos", label: "Videos" },
+  { to: "/media", label: "Media" },
+  { to: "/about", label: "About" },
+  { to: "/faq", label: "FAQ" },
+];
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
