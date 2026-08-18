@@ -30,6 +30,9 @@ export default {
           body: "hsl(var(--body))",
           muted: "hsl(var(--muted))",
           border: "hsl(var(--border))",
+          panel: "hsl(var(--panel))",
+          "panel-border": "hsl(var(--panel-border))",
+
         },
         border: "hsl(var(--border-color))",
         input: "hsl(var(--input))",
