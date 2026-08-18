@@ -27,3 +27,6 @@ const Index = () => (
   </SiteLayout>
 );
 
+export default Index;
+
+
