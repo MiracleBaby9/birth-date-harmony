@@ -1,5 +1,4 @@
 import { motion, type Variants } from "framer-motion";
-import { Star, Baby, Sparkles, ShieldCheck } from "lucide-react";
 import DisclaimerLine from "./DisclaimerLine";
 import heroBg from "@/assets/hero-bg.jpg";
 
@@ -16,12 +15,18 @@ const fadeUpVariants: Variants = {
   }),
 };
 
-const trustItems = [
-  { Icon: Star, bold: "4.9 Star", sub: "User Rating", color: "text-brand-gold" },
-  { Icon: Baby, bold: "Thousands", sub: "Happy Parents", color: "text-brand-rose" },
-  { Icon: Sparkles, bold: "99%+", sub: "Felt Confident", color: "text-brand-sage" },
-  { Icon: ShieldCheck, bold: "100%", sub: "Reliable Results", color: "text-brand-rose" },
+const featureLine = [
+  "Panchang, Tithi, Mool, Nakshatra",
+  "Delivered within 24–48 Hours",
+  "Loshu Grid, Rajyog, Mulank, Bhagyank Analysis",
 ];
+
+const stats = [
+  { value: "14,000+", label: "Reports" },
+  { value: "4.9/5", label: "Rating" },
+  { value: "99%", label: "Satisfaction" },
+];
+
 
 const Hero = () => (
   <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-12 sm:pt-28">
