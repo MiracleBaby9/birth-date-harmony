@@ -1,12 +1,17 @@
 import { motion } from "framer-motion";
+import Autoplay from "embla-carousel-autoplay";
+import { useRef } from "react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.12, duration: 0.6 },
-  }),
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
 
 const testimonials = [
@@ -44,58 +49,64 @@ const Stars = ({ count }: { count: number }) => (
   </div>
 );
 
-const Testimonials = () => (
-  <section className="py-20 bg-brand-surface">
-    <div className="container">
-      <motion.div
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="visible"
-        custom={0}
-        viewport={{ once: true }}
-        className="text-center mb-12 space-y-2"
-      >
-        <h2 className="font-display text-2xl sm:text-3xl font-bold">
-          What Parents Are Saying
-        </h2>
-        <p className="font-accent italic text-brand-gold text-lg">
-          Real experiences from real families
-        </p>
-      </motion.div>
+const Testimonials = () => {
+  const autoplay = useRef(
+    Autoplay({ delay: 4500, stopOnInteraction: false, stopOnMouseEnter: true }),
+  );
 
-      <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
-        {testimonials.map((t, i) => (
-          <motion.div
-            key={i}
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            custom={i}
-            viewport={{ once: true }}
-            className="rounded-card bg-brand-card border border-brand-border p-6 space-y-3 relative"
-          >
-            {/* Quote mark */}
-            <span className="absolute top-4 right-5 font-accent text-5xl text-brand-rose/10 leading-none select-none">
-              "
-            </span>
+  return (
+    <section className="py-20 bg-brand-surface">
+      <div className="container">
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="text-center mb-12 space-y-2"
+        >
+          <h2 className="heading-lg font-bold">What Parents Are Saying</h2>
+          <p className="font-accent italic text-brand-gold body-md">
+            Real experiences from real families
+          </p>
+        </motion.div>
 
-            <Stars count={t.rating} />
+        <Carousel
+          opts={{ align: "start", loop: true }}
+          plugins={[autoplay.current]}
+          className="max-w-4xl mx-auto"
+        >
+          <CarouselContent>
+            {testimonials.map((t, i) => (
+              <CarouselItem key={i} className="sm:basis-1/2">
+                <div className="h-full rounded-card bg-brand-card border border-brand-border p-6 space-y-3 relative">
+                  <span className="absolute top-4 right-5 font-accent text-5xl text-brand-rose/10 leading-none select-none">
+                    "
+                  </span>
 
-            <p className="text-brand-body text-sm leading-relaxed italic">
-              "{t.text}"
-            </p>
+                  <Stars count={t.rating} />
 
-            <div className="pt-2 border-t border-brand-border">
-              <span className="font-body font-semibold text-brand-heading text-sm">
-                {t.name}
-              </span>
-              <span className="text-brand-muted text-xs ml-2">{t.location}</span>
-            </div>
-          </motion.div>
-        ))}
+                  <p className="text-brand-body text-sm leading-relaxed italic">
+                    "{t.text}"
+                  </p>
+
+                  <div className="pt-2 border-t border-brand-border">
+                    <span className="font-body font-semibold text-brand-heading text-sm">
+                      {t.name}
+                    </span>
+                    <span className="text-brand-muted text-xs ml-2">
+                      {t.location}
+                    </span>
+                  </div>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="hidden sm:flex -left-4" />
+          <CarouselNext className="hidden sm:flex -right-4" />
+        </Carousel>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default Testimonials;
