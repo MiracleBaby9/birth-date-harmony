@@ -26,7 +26,7 @@ const SiteLayout = ({ children }: { children: ReactNode }) => {
       <DisclaimerPopup />
       <StickyDisclaimer />
       <Header />
-      <main>{children}</main>
+      <main className="gold-frame">{children}</main>
       <Footer />
       <MobileCTABar />
       <WhatsAppFloat />
