@@ -18,7 +18,7 @@
 //       <Sonner />
 //       <BrowserRouter>
 //         <Suspense fallback={<div className="min-h-screen bg-brand-bg" />}>
-        <Routes>
+//         <Routes>
 //           <Route path="/" element={<Index />} />
 //           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 //           <Route path="/refund-policy" element={<RefundPolicy />} />
@@ -26,7 +26,7 @@
 //           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
 //           <Route path="*" element={<NotFound />} />
 //         </Routes>
-        </Suspense>
+//         </Suspense>
 //       </BrowserRouter>
 //     </TooltipProvider>
 //   </QueryClientProvider>
