@@ -6,6 +6,8 @@ import MobileCTABar from "@/components/MobileCTABar";
 import StickyDisclaimer from "@/components/StickyDisclaimer";
 import DisclaimerPopup from "@/components/DisclaimerPopup";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
+import LiveTicker from "@/components/LiveTicker";
+
 
 const SiteLayout = ({ children }: { children: ReactNode }) => {
   const { pathname, hash } = useLocation();
@@ -30,6 +32,8 @@ const SiteLayout = ({ children }: { children: ReactNode }) => {
       <Footer />
       <MobileCTABar />
       <WhatsAppFloat />
+      <LiveTicker />
+
     </>
   );
 };
