@@ -22,7 +22,7 @@ const FinalCTA = () => (
         Choose a beginning that supports balance and strength.
       </motion.p>
       <motion.a
-        href="#pricing"
+        href="/#pricing"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}

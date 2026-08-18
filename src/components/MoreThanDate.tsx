@@ -52,7 +52,7 @@ const MoreThanDate = () => (
               With multiple possible dates suggested medically, selecting one can feel overwhelming. Numerology-based guidance helps narrow down suitable options, offering clarity and confidence in your decision.
             </p>
             <a
-              href="#pricing"
+              href="/#pricing"
               className="inline-block rounded-full bg-brand-rose px-6 py-2.5 text-sm font-body font-semibold text-white transition-transform hover:scale-105"
             >
               Get My C-Section Baby Dates Now

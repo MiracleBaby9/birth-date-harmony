@@ -74,7 +74,7 @@ const Hero = () => (
       </motion.p>
 
       <motion.a
-        href="#pricing"
+        href="/#pricing"
         variants={fadeUpVariants}
         initial="hidden"
         animate="visible"

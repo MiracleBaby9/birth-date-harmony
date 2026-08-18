@@ -17,7 +17,7 @@ const MobileCTABar = () => {
     >
       <div className="bg-brand-surface/95 backdrop-blur-md border-t border-brand-border px-4 py-3">
         <a
-          href="#pricing"
+          href="/#pricing"
           className="block w-full text-center rounded-full bg-gradient-warm px-6 py-3 text-sm font-body font-semibold text-white shadow-lg transition-transform hover:scale-105"
         >
           Get My C-Section Baby Dates Now
