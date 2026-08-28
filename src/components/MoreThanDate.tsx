@@ -98,7 +98,7 @@ const MoreThanDate = () => (
             href="/#pricing"
             className="inline-block rounded-full bg-gradient-warm px-7 py-3 text-sm font-body font-semibold text-white transition-transform hover:scale-105"
           >
-            Get My C-Section Baby Dates Now
+            Get My Planned Delivery Dates Now
           </a>
           <DisclaimerLine />
         </div>

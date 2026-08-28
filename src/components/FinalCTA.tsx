@@ -29,7 +29,7 @@ const FinalCTA = () => (
         transition={{ delay: 0.2 }}
         className="keep-color inline-block rounded-full bg-white text-brand-heading px-8 py-3.5 text-base font-body font-semibold shadow-lg transition-transform hover:scale-105"
       >
-        Get My C-Section Baby Dates Now
+        Get My Planned Delivery Dates Now
       </motion.a>
       <motion.div
         initial={{ opacity: 0 }}

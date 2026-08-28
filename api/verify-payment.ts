@@ -97,7 +97,7 @@
 //     razorpay_payment_id,
 //     razorpay_signature,
 //     booking = {},
-//     packageName = "C-Section Baby Date Guidance",
+//     packageName = "Planned Delivery Date Guidance",
 //     amount,
 //   } = req.body as {
 //     razorpay_order_id: string;
@@ -376,7 +376,7 @@ export default async function handler(
     razorpay_payment_id,
     razorpay_signature,
     booking = {},
-    packageName = "C-Section Baby Date Guidance",
+    packageName = "Planned Delivery Date Guidance",
     amount,
     addon = null,
   } = req.body as {
