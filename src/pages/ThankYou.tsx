@@ -9,7 +9,7 @@ const ThankYou = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
-  const packageName = searchParams.get("package") || "C-Section Guidance Package";
+  const packageName = searchParams.get("package") || "Planned Delivery Guidance Package";
   const amount = searchParams.get("amount") || "";
   const paymentId = searchParams.get("paymentId") || "";
   const orderId = searchParams.get("orderId") || "";

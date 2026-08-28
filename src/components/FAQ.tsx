@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import DisclaimerLine from "./DisclaimerLine";
 
 const faqs = [
-  { q: "What is C-Section baby date selection?", a: "C-Section baby date selection is a numerology-based guidance process that helps parents choose a supportive birth date when a planned medical delivery is already decided." },
+  { q: "What is Planned Delivery date selection?", a: "Planned Delivery date selection is a numerology-based guidance process that helps parents choose a supportive birth date when a planned medical delivery is already decided." },
   { q: "Does this replace medical advice or my doctor's recommendation?", a: "No. Medical safety always comes first. Numerology guidance is provided only within the medically approved date range suggested by your doctor." },
   { q: "How are the dates selected?", a: "Dates are evaluated using numerology principles, considering factors like day vibration and overall numerical balance to support harmony, confidence, and stability for the child." },
   { q: "How many date options will I receive?", a: "You will typically receive 2–3 carefully evaluated date options, from which you can choose in coordination with your doctor." },
@@ -12,7 +12,7 @@ const faqs = [
   { q: "Can this be done at the last minute?", a: "Yes, urgent requests can be handled depending on availability. However, early planning allows for better evaluation and flexibility." },
   { q: "Will choosing a date guarantee a specific outcome for my child?", a: "No. Date selection is a supportive alignment tool, not a guarantee. A child's growth is shaped by upbringing, environment, and care along with timing." },
   { q: "How will I receive the suggested dates?", a: "The guidance is shared through a personalised report or message, delivered digitally over email." },
-  { q: "Is my personal information kept confidential?", a: "Absolutely. All details shared for C-Section date guidance are strictly confidential and used only for this consultation." },
+  { q: "Is my personal information kept confidential?", a: "Absolutely. All details shared for Planned Delivery date guidance are strictly confidential and used only for this consultation." },
 ];
 
 const FAQItem = ({ q, a, index }: { q: string; a: string; index: number }) => {

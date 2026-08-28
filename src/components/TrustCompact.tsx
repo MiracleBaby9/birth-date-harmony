@@ -5,8 +5,8 @@ import prashant from "@/assets/celeb-prashant-sambaragi.webp";
 
 const celebs = [
   { name: "Geita Tyagi", role: "TV & Film Actress", work: "Jagaddhatri · Doli Armaano Ki", image: geita },
-  { name: "Prashant S Sambaragi", role: "South Actor & Entrepreneur", work: "Bigg Boss Kannada Season 8", image: prashant },
-  { name: "Darshan Patil", role: "Film Actor", work: "Dhurandhar · Thumbs Up", image: darshan },
+  { name: "Prashantt Sambargi", role: "South Actor & Entrepreneur", work: "Bigg Boss Kannada Season 8", image: prashant },
+  { name: "Darsshan", role: "Film Actor", work: "Dhurandhar · Thumbs Up", image: darshan },
 ];
 
 const GoogleG = () => (

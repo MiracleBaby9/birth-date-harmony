@@ -27,10 +27,10 @@ const celebrities = [
     note: "Took personal consultation from Ankshaastra for herself.",
   },
   {
-    name: "Prashant S Sambaragi",
+    name: "Prashantt Sambargi",
     role: "South Actor & Entrepreneur",
     image: prashant,
-    bio: "Prashant S Sambaragi is a popular South Indian actor and entrepreneur, widely recognised as a contestant on Bigg Boss Kannada Season 8.",
+    bio: "Prashantt Sambargi is a popular South Indian actor and entrepreneur, widely recognised as a contestant on Bigg Boss Kannada Season 8.",
     works: [
       { title: "Bigg Boss Kannada S8", role: "Contestant" },
       { title: "South Indian Cinema", role: "Actor" },
@@ -40,10 +40,10 @@ const celebrities = [
   },
   {
 
-    name: "Darshan Patil",
+    name: "Darsshan",
     role: "Film Actor & Body Double",
     image: darshan,
-    bio: "Darshan Patil is a versatile Indian film actor known for his work as a body double for leading stars, with appearances in numerous Hindi films.",
+    bio: "Darsshan is a versatile Indian film actor known for his work as a body double for leading stars, with appearances in numerous Hindi films.",
     works: [
       { title: "Dhurandhar", role: "Featured Role" },
       { title: "Thumbs Up", role: "Featured Role" },
