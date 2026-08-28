@@ -56,7 +56,7 @@ const Hero = () => (
         custom={0}
         className="inline-block rounded-full border border-brand-rose/30 bg-white/70 backdrop-blur-md px-5 py-1.5 text-xs sm:text-sm font-body font-semibold uppercase tracking-[0.18em] text-brand-rose shadow-soft"
       >
-        If You Are Planning a C-Section
+        If You Are Planning a Delivery Date
       </motion.span>
 
       <motion.h1

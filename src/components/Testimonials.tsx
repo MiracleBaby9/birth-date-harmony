@@ -19,7 +19,7 @@ const testimonials = [
     name: "Priya S.",
     location: "Mumbai",
     rating: 5,
-    text: "Himansshu Ji guided us with 3 perfect dates for our baby's C-section. We felt so confident and at peace with the decision. Truly grateful!",
+    text: "Himansshu Ji guided us with 3 perfect dates for our baby's planned delivery. We felt so confident and at peace with the decision. Truly grateful!",
   },
   {
     name: "Ankit & Neha R.",

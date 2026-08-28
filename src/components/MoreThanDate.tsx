@@ -59,7 +59,7 @@ const MoreThanDate = () => (
             <span className="text-brand-gold">Scheduled Date</span>
           </h2>
           <p className="text-white/70 leading-relaxed">
-            When a C-section is planned, the birth date becomes more than a medical decision.
+            When a Planned Delivery is done, the birth date becomes more than a medical decision.
             Astrology and Numerology help identify dates that align with harmony, stability and a
             strong foundation — supporting your child's natural rhythm from the very beginning.
           </p>

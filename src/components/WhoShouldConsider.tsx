@@ -40,7 +40,7 @@ const WhoShouldConsider = () => (
           </p>
           <h2 className="heading-lg font-bold text-white leading-tight">
             Struggling to Choose the{" "}
-            <span className="text-brand-gold">Right C-Section Date?</span>
+            <span className="text-brand-gold">Right Planned Delivery Date?</span>
           </h2>
           <p className="text-white/70 text-base sm:text-lg leading-relaxed">
             You're not alone. Most parents feel this way — a birth date isn't
