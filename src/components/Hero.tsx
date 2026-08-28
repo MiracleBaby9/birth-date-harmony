@@ -87,7 +87,7 @@ const Hero = () => (
         custom={3}
         className="inline-block whitespace-nowrap rounded-full bg-gradient-warm px-6 sm:px-9 py-3.5 sm:py-4 text-[0.82rem] sm:text-base font-body font-bold text-white shadow-soft transition-transform hover:scale-[1.04]"
       >
-        Get My C-Section Baby Dates Now
+        Get My Planned Delivery Dates Now
       </motion.a>
 
 
