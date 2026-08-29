@@ -291,7 +291,7 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice, addon
         onInteractOutside={(e) => { if (isProcessing) e.preventDefault(); }}
         onEscapeKeyDown={(e) => { if (isProcessing) e.preventDefault(); }}
         onOpenAutoFocus={(e) => { if (isPaying) e.preventDefault(); }}
-        className={`max-w-lg w-[96vw] max-h-[90vh] overflow-y-auto bg-brand-surface border-brand-border p-0 ${isPaying ? "pointer-events-none opacity-60" : ""}`}
+        className={`max-w-lg w-[96vw] max-h-[90vh] overflow-y-auto bg-brand-surface border-brand-border p-0 ${isPaying ? "pointer-events-none invisible opacity-0" : ""}`}
       >
         <DialogHeader className="sticky top-0 z-10 bg-brand-surface px-5 pt-5 pb-3 border-b border-brand-border">
           <DialogTitle className="font-display text-lg text-brand-heading text-center">
