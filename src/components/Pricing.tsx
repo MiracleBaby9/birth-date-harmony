@@ -107,7 +107,7 @@ const TIERS: Tier[] = [
   {
     id: "complete",
     name: "Complete Package",
-    price: 1,
+    price: 8567,
     tagline: "The complete numerology blueprint for your baby's lifetime.",
     badge: "✦ Complete Blueprint",
     features: [
