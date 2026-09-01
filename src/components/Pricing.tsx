@@ -78,6 +78,7 @@ interface Tier {
   id: string;
   name: string;
   price: number;
+  originalPrice?: number;
   tagline: string;
   badge?: string;
   features: string[];
@@ -98,6 +99,7 @@ const TIERS: Tier[] = [
     id: "advanced",
     name: "Advanced Package",
     price: 6137,
+    originalPrice: 6819,
     tagline: "For parents who want the full picture — dates, name & beyond.",
     badge: "✦ Most Popular",
     highlight: true,
@@ -108,6 +110,7 @@ const TIERS: Tier[] = [
     id: "complete",
     name: "Complete Package",
     price: 8567,
+    originalPrice: 9519,
     tagline: "The complete numerology blueprint for your baby's lifetime.",
     badge: "✦ Complete Blueprint",
     features: [
