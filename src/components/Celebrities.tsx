@@ -40,7 +40,7 @@ const celebrities = [
   },
   {
 
-    name: "Darsshan",
+    name: "Darsshan Patil",
     role: "Film Actor & Body Double",
     image: darshan,
     bio: "Darsshan is a versatile Indian film actor known for his work as a body double for leading stars, with appearances in numerous Hindi films.",
