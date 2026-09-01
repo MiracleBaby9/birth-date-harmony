@@ -198,9 +198,21 @@ const Pricing = () => {
                 </span>
               )}
               <div className="text-center mb-4">
-                <span className={`font-accent font-bold text-brand-rose ${tier.highlight ? "text-[54px]" : "text-[46px]"}`}>
-                  &#8377;{tier.price.toLocaleString("en-IN")}
-                </span>
+                {tier.originalPrice && (
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-gold/15 text-brand-gold text-[10px] font-body font-semibold px-2.5 py-1 mb-2">
+                    10% off — Bundle Pricing
+                  </span>
+                )}
+                <div className="flex items-center justify-center gap-2.5">
+                  <span className={`font-accent font-bold text-brand-rose ${tier.highlight ? "text-[54px]" : "text-[46px]"}`}>
+                    &#8377;{tier.price.toLocaleString("en-IN")}
+                  </span>
+                  {tier.originalPrice && (
+                    <span className="text-brand-muted text-lg sm:text-xl line-through">
+                      ₹{tier.originalPrice.toLocaleString("en-IN")}
+                    </span>
+                  )}
+                </div>
                 <h3 className="font-display text-xl font-semibold mt-1">{tier.name}</h3>
                 <p className="text-brand-body text-sm mt-1">{tier.tagline}</p>
               </div>
