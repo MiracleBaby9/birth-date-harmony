@@ -15,6 +15,7 @@ const RefundPolicy = () => (
         <h2 className="text-xl font-display text-brand-heading">1. No Refund Policy</h2>
         <p>We operate a strict NO REFUND policy for all products and services, including but not limited to:</p>
         <ul className="list-disc pl-6 space-y-1">
+          <li>C-Section Reports / Planned Delivery Date Reports (Digital PDF)</li>
           <li>Name Correction Reports (Digital PDF)</li>
           <li>Personalized Numerology Analysis</li>
           <li>Any physical products purchased</li>
