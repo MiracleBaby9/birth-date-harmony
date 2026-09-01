@@ -161,6 +161,11 @@ const Pricing = () => {
                 <span className="block font-display text-sm font-semibold mt-0.5">
                   ₹{tier.price.toLocaleString("en-IN")}
                 </span>
+                {tier.originalPrice && (
+                  <span className="block text-[10px] line-through opacity-60">
+                    ₹{tier.originalPrice.toLocaleString("en-IN")}
+                  </span>
+                )}
               </button>
             ))}
           </div>
