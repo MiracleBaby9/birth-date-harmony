@@ -78,6 +78,7 @@ interface Tier {
   id: string;
   name: string;
   price: number;
+  originalPrice?: number;
   tagline: string;
   badge?: string;
   features: string[];
@@ -98,6 +99,7 @@ const TIERS: Tier[] = [
     id: "advanced",
     name: "Advanced Package",
     price: 6137,
+    originalPrice: 6819,
     tagline: "For parents who want the full picture — dates, name & beyond.",
     badge: "✦ Most Popular",
     highlight: true,
@@ -108,6 +110,7 @@ const TIERS: Tier[] = [
     id: "complete",
     name: "Complete Package",
     price: 8567,
+    originalPrice: 9519,
     tagline: "The complete numerology blueprint for your baby's lifetime.",
     badge: "✦ Complete Blueprint",
     features: [
@@ -158,6 +161,11 @@ const Pricing = () => {
                 <span className="block font-display text-sm font-semibold mt-0.5">
                   ₹{tier.price.toLocaleString("en-IN")}
                 </span>
+                {tier.originalPrice && (
+                  <span className="block text-[10px] line-through opacity-60">
+                    ₹{tier.originalPrice.toLocaleString("en-IN")}
+                  </span>
+                )}
               </button>
             ))}
           </div>
@@ -190,9 +198,21 @@ const Pricing = () => {
                 </span>
               )}
               <div className="text-center mb-4">
-                <span className={`font-accent font-bold text-brand-rose ${tier.highlight ? "text-[54px]" : "text-[46px]"}`}>
-                  &#8377;{tier.price.toLocaleString("en-IN")}
-                </span>
+                {tier.originalPrice && (
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-gold/15 text-brand-gold text-[10px] font-body font-semibold px-2.5 py-1 mb-2">
+                    10% off — Bundle Pricing
+                  </span>
+                )}
+                <div className="flex items-center justify-center gap-2.5">
+                  <span className={`font-accent font-bold text-brand-rose ${tier.highlight ? "text-[54px]" : "text-[46px]"}`}>
+                    &#8377;{tier.price.toLocaleString("en-IN")}
+                  </span>
+                  {tier.originalPrice && (
+                    <span className="text-brand-muted text-lg sm:text-xl line-through">
+                      ₹{tier.originalPrice.toLocaleString("en-IN")}
+                    </span>
+                  )}
+                </div>
                 <h3 className="font-display text-xl font-semibold mt-1">{tier.name}</h3>
                 <p className="text-brand-body text-sm mt-1">{tier.tagline}</p>
               </div>
