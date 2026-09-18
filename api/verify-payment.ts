@@ -1,7 +1,5 @@
 
 
-
-
 // import type { VercelRequest, VercelResponse } from "@vercel/node";
 // import crypto from "crypto";
 // import { sendBookingNotifications } from "./_utils/notifications.js";
@@ -99,6 +97,7 @@
 //     booking = {},
 //     packageName = "Planned Delivery Date Guidance",
 //     amount,
+//     addon = null,
 //   } = req.body as {
 //     razorpay_order_id: string;
 //     razorpay_payment_id: string;
@@ -106,6 +105,7 @@
 //     booking?: any;
 //     packageName?: string;
 //     amount?: number;
+//     addon?: { name: string; price: number } | null;
 //   };
 
 //   if (
@@ -201,7 +201,9 @@
 //           whatsapp: customerPhone,
 //           source_website: "miraclebaby.ankshaastra.com",
 //           lifecycle_stage: "Completed",
-//           metadata: booking,
+//           // FIX: addon (e.g. "Delivery Date Change Protection") was sent by
+//           // the frontend but never saved anywhere — merged into metadata now.
+//           metadata: { ...booking, addon },
 //         })
 //         .select("id")
 //         .single();
@@ -243,7 +245,9 @@
 //     order_type: "service",
 //     workflow_stage: "payment_received",
 
-//     metadata: booking,
+//     // FIX: addon (e.g. "Delivery Date Change Protection") was sent by the
+//     // frontend but never saved anywhere — merged into metadata now.
+//     metadata: { ...booking, addon },
 
 //     razorpay_order_id,
 //     razorpay_payment_id,
@@ -280,7 +284,6 @@
 // }
 
 
-
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import crypto from "crypto";
 import { sendBookingNotifications } from "./_utils/notifications.js";
@@ -292,17 +295,6 @@ import { supabase } from "./_utils/supabase.js";
 // Returns: { verified: true } or 400 error
 // ---------------------------------------------------------------------------
 
-// FIX: this route writes the order directly into the hub's shared
-// `orders` table, bypassing the hub's `operations/order-ingest` API
-// entirely. That API is the only place that also triggers invoice
-// generation — a direct table insert has no equivalent, so orders created
-// here never got an automatic invoice (same gap found and fixed on
-// Empower's api/verify-payment equivalent). `triggerHubInvoice()` calls a
-// small dedicated hub endpoint (`/api/operations/trigger-invoice`) right
-// after the order is created, using the same generate-now-else-queue logic
-// the hub's own checkout uses. Best-effort/non-blocking: if this call
-// fails, it's logged and swallowed — it must never break this route's
-// existing response or the email/WhatsApp notifications below.
 const HUB_API_BASE = (process.env.HUB_API_BASE || "https://ankshaastra.com/api").replace(/\/$/, "");
 const HUB_API_KEY = process.env.HUB_API_KEY || process.env.OPERATIONS_API_KEY;
 
@@ -315,14 +307,6 @@ async function triggerHubInvoice(orderId: string | null | undefined, paymentId?:
 
   try {
     const controller = new AbortController();
-    // FIX: was 15000ms — too short. Invoice generation on the hub does PDF
-    // creation + storage upload + QR code + customer email + admin email,
-    // all synchronously before responding. Observed real completion time
-    // was ~23s, so the old 15s timeout was aborting requests that would
-    // have succeeded — the invoice may have still been created on the hub
-    // even though this call reported failure, since aborting the client
-    // fetch doesn't necessarily stop the hub's serverless function from
-    // finishing its work.
     const timeout = setTimeout(() => controller.abort(), 45000);
     const response = await fetch(`${HUB_API_BASE}/operations/trigger-invoice`, {
       method: "POST",
@@ -379,6 +363,7 @@ export default async function handler(
     packageName = "Planned Delivery Date Guidance",
     amount,
     addon = null,
+    orderId = null,
   } = req.body as {
     razorpay_order_id: string;
     razorpay_payment_id: string;
@@ -387,6 +372,10 @@ export default async function handler(
     packageName?: string;
     amount?: number;
     addon?: { name: string; price: number } | null;
+    // Same id create-order.ts saved the "pending" row under — when present,
+    // we UPDATE that row instead of inserting a new one (avoids a stray
+    // duplicate "pending" row sitting in abandoned-carts forever).
+    orderId?: string | null;
   };
 
   if (
@@ -428,11 +417,6 @@ export default async function handler(
 
   // -------------------------------------------------------------------------
   // Step 1: Find or create the customer in the shared `customers` table.
-  // The CRM module (used by all three sites) reads from `customers`, not
-  // from `orders` — so without this step, orders/invoices would show up
-  // fine, but the customer would never appear in CRM.
-  // Matches on email first, then phone, so repeat customers aren't
-  // duplicated on every purchase.
   // -------------------------------------------------------------------------
   const customerEmail = booking.email || null;
   const customerPhone = booking.whatsapp || null;
@@ -463,7 +447,6 @@ export default async function handler(
     if (existingCustomer) {
       customerId = existingCustomer.id;
 
-      // Keep an existing customer's lifecycle stage current on repeat purchases too.
       const { error: updateError } = await supabase
         .from("customers")
         .update({ lifecycle_stage: "Completed" })
@@ -482,8 +465,6 @@ export default async function handler(
           whatsapp: customerPhone,
           source_website: "miraclebaby.ankshaastra.com",
           lifecycle_stage: "Completed",
-          // FIX: addon (e.g. "Delivery Date Change Protection") was sent by
-          // the frontend but never saved anywhere — merged into metadata now.
           metadata: { ...booking, addon },
         })
         .select("id")
@@ -501,13 +482,8 @@ export default async function handler(
 
   // -------------------------------------------------------------------------
   // Step 2: Save the order, linked to the customer above via customer_id.
-  // FIX: added `.select("id").single()` so we get the new order's id back —
-  // needed to call triggerHubInvoice() below. The insert itself is
-  // unchanged.
   // -------------------------------------------------------------------------
-  const { data: insertedOrder, error: insertError } = await supabase
-  .from("orders")
-  .insert({
+  const orderRow: Record<string, unknown> = {
     source_website: "miraclebaby.ankshaastra.com",
 
     customer_id: customerId,
@@ -526,23 +502,33 @@ export default async function handler(
     order_type: "service",
     workflow_stage: "payment_received",
 
-    // FIX: addon (e.g. "Delivery Date Change Protection") was sent by the
-    // frontend but never saved anywhere — merged into metadata now.
     metadata: { ...booking, addon },
 
     razorpay_order_id,
     razorpay_payment_id,
     razorpay_signature,
-  })
-  .select("id")
-  .single();
+  };
+
+  // FIX: previously always .insert()ed a brand-new row here, even though
+  // create-order.ts now already saves a "pending" row under `orderId` the
+  // moment checkout starts. Without this, every successful payment would
+  // leave behind a stray duplicate "pending" row that never gets cleaned
+  // up — and would keep showing up forever in the hub's "abandoned carts"
+  // sync even though the customer did pay. When the frontend sends that
+  // same `orderId`, upsert (update-in-place) that exact row instead of
+  // inserting a second one.
+  if (orderId) orderRow.id = orderId;
+
+  const { data: insertedOrder, error: insertError } = await supabase
+    .from("orders")
+    .upsert(orderRow, { onConflict: "id" })
+    .select("id")
+    .single();
 
   if (insertError) {
     console.error("Supabase insert failed:", insertError);
   } else {
     console.log("Order saved successfully in Supabase");
-    // FIX: this is the missing step — nothing previously told the hub to
-    // generate an invoice for this order.
     await triggerHubInvoice(insertedOrder?.id, razorpay_payment_id);
   }
 
