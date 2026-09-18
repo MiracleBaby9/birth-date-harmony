@@ -897,6 +897,7 @@ const BookingFormModal = ({ open, onOpenChange, packageName, packagePrice, addon
                   addons: chosenAddons.map((a) => ({ name: a.name, price: a.price })),
                   packageAmount: validPackagePrice,
                   amount: totalPrice,
+                  orderId: getOrGenerateOrderId(),
                 }),
                 
               });
