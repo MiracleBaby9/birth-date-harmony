@@ -68,7 +68,7 @@ const Header = () => {
         </nav>
 
         <a
-          href="https://miraclebaby.ankshaastra.com/"
+          href="https://empower.ankshaastra.com/"
           target="_blank"
           rel="noopener noreferrer"
           className="max-w-[46vw] rounded-full bg-gradient-warm px-4 py-2 text-center text-sm font-body font-semibold leading-snug text-white transition-transform hover:scale-105 sm:max-w-none sm:px-5"

@@ -86,6 +86,11 @@ interface Tier {
   highlight?: boolean;
 }
 
+export const PACKAGE_PRICES = {
+  advanced: { price: 6137, originalPrice: 6874 },
+  complete: { price: 8477, originalPrice: 9394 },
+} as const;
+
 const TIERS: Tier[] = [
   {
     id: "starter",
@@ -98,8 +103,7 @@ const TIERS: Tier[] = [
   {
     id: "advanced",
     name: "Advanced Package",
-    price: 6137,
-    originalPrice: 6819,
+    ...PACKAGE_PRICES.advanced,
     tagline: "For parents who want the full picture — dates, name & beyond.",
     badge: "✦ Most Popular",
     highlight: true,
@@ -109,7 +113,7 @@ const TIERS: Tier[] = [
   {
     id: "complete",
     name: "Complete Package",
-    price: 8567,
+    ...PACKAGE_PRICES.complete,
     tagline: "The complete numerology blueprint for your baby's lifetime.",
     badge: "✦ Complete Blueprint",
     features: [
